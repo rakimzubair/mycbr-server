@@ -82,8 +82,3 @@ public class Application implements CommandLineRunner {
 
     }
 }
-
-@Repository
-interface ClientRepository extends JpaRepository<Client, Long> {
-
-}
