@@ -81,14 +81,6 @@ public class Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
     }
-
-    /*@Bean
-    ApplicationRunner applicationRunner(ClientRepository clientRepository) {
-        return args-> {
-            clientRepository.save(new Client(TRUE, "date", "first", "last", 1, "M", "LOCATION", 2, "xxx", TRUE, "xxx", new ArrayList<String>(), "hr", "hr", "hig", "hr", "hr", "hig", "hr", "hr", "hig"));
-        };
-    }*/
-
 }
 
 @Repository
