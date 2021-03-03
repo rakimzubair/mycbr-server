@@ -1,7 +1,11 @@
 package com.hha.server.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.ArrayList;
 
+@Entity
+@Table(name = "CLIENT_DATA")
 public class Client {
     //Saved answers to questions
     //all open to change depending on saving to database

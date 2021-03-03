@@ -1,10 +1,18 @@
 package com.hha.server;
 
+import com.hha.server.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.ArrayList;
+
+import static java.lang.Boolean.TRUE;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -64,9 +72,6 @@ public class Application implements CommandLineRunner {
     private static final String client_visit_id = "CLIENT_ID";
     //----------------------------------------------------------------------------
 
-    //spring boot connects this template to the database
-    @Autowired
-    //private JdbcTemplate jdbcTemplate;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -74,31 +79,18 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-         //Setting up CBR Worker table
-        /*String create_worker_table = "CREATE TABLE " + TABLE_NAME + " (" + COL_1 + " TEXT, " + COL_2 + " TEXT, " + COL_3
-                + " TEXT UNIQUE NOT NULL, " + COL_4 + " TEXT, " + COL_5 + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL);";
-        jdbcTemplate.execute(create_worker_table);
 
-        //Setting up Clients table
-        String create_client_table = "CREATE TABLE " + client_table_name + " (" + client_id + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + client_consent + " BOOLEAN NOT NULL, " + client_date + " STRING NOT NULL, " + client_first_name + " TEXT, "
-                + client_last_name + " TEXT, " + client_age + " INTEGER, " + client_gender + " TEXT, "
-                + client_village_no + " INTEGER, "  + client_location + " TEXT, " + client_contact + " STRING, "+ client_caregiver_presence
-                + " BOOLEAN NOT NULL, " + client_caregiver_number +" STRING, " + client_disability + " TEXT, " + client_heath_rate
-                + " STRING, "+ client_health_requirement + " STRING, " + client_health_goal + " STRING, " + client_education_rate +" STRING, "
-                + client_education_requirement + " STRING, " + client_education_goal  + " STRING, " + client_social_rate + " STRING, "
-                + client_social_requirement + " STRING, " +  client_social_goal + " STRING, " + is_synced + " INTEGER NOT NULL DEFAULT 0);";
-        jdbcTemplate.execute(create_client_table);
-
-        //Setting up Visits table
-        String create_visit_table = "CREATE TABLE " +
-                visit_table + " (" + visit_id + " INTEGER PRIMARY KEY AUTOINCREMENT, " + visit_date + " STRING NOT NULL, "
-                + visit_purpose + " STRING, " + if_cbr + " TEXT, " +  visit_location + " TEXT, " + visit_village_no + " INTEGER, "
-                + health_provided + " TEXT, " + health_goal_status + " TEXT, " + health_outcome + " STRING, "
-                + education_provided + " TEXT, " + edu_goal_status + " TEXT, " + education_outcome + " STRING, "
-                + social_provided + " TEXT, " + social_goal_status + " TEXT, " + social_outcome + " STRING, "
-                + client_visit_id + " INTEGER NOT NULL);";
-        jdbcTemplate.execute(create_visit_table);*/
     }
+
+    @Bean
+    ApplicationRunner applicationRunner(ClientRepository clientRepository) {
+        return args-> {
+            clientRepository.save(new Client(TRUE, "date", "first", "last", 1, "M", "LOCATION", 2, "xxx", TRUE, "xxx", new ArrayList<String>(), "hr", "hr", "hig", "hr", "hr", "hig", "hr", "hr", "hig"));
+        };
+    }
+
+}
+
+interface ClientRepository extends CrudRepository<Client, Long> {
 
 }
