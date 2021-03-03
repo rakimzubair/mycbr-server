@@ -35,9 +35,11 @@ public class Controller {
     public void badIdExceptionHandler() {
 
     }
+
+    interface ClientRepository extends JpaRepository<Client, Long> {
+
+    }
 }
 
-interface ClientRepository extends JpaRepository<Client, Long> {
 
-}
 
