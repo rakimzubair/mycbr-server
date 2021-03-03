@@ -82,12 +82,12 @@ public class Application implements CommandLineRunner {
 
     }
 
-    @Bean
+    /*@Bean
     ApplicationRunner applicationRunner(ClientRepository clientRepository) {
         return args-> {
             clientRepository.save(new Client(TRUE, "date", "first", "last", 1, "M", "LOCATION", 2, "xxx", TRUE, "xxx", new ArrayList<String>(), "hr", "hr", "hig", "hr", "hr", "hig", "hr", "hr", "hig"));
         };
-    }
+    }*/
 
 }
 
