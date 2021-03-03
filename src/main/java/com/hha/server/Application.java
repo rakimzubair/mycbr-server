@@ -66,7 +66,7 @@ public class Application implements CommandLineRunner {
 
     //spring boot connects this template to the database
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    //private JdbcTemplate jdbcTemplate;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -75,7 +75,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
          //Setting up CBR Worker table
-        String create_worker_table = "CREATE TABLE " + TABLE_NAME + " (" + COL_1 + " TEXT, " + COL_2 + " TEXT, " + COL_3
+        /*String create_worker_table = "CREATE TABLE " + TABLE_NAME + " (" + COL_1 + " TEXT, " + COL_2 + " TEXT, " + COL_3
                 + " TEXT UNIQUE NOT NULL, " + COL_4 + " TEXT, " + COL_5 + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL);";
         jdbcTemplate.execute(create_worker_table);
 
@@ -98,7 +98,7 @@ public class Application implements CommandLineRunner {
                 + education_provided + " TEXT, " + edu_goal_status + " TEXT, " + education_outcome + " STRING, "
                 + social_provided + " TEXT, " + social_goal_status + " TEXT, " + social_outcome + " STRING, "
                 + client_visit_id + " INTEGER NOT NULL);";
-        jdbcTemplate.execute(create_visit_table);
+        jdbcTemplate.execute(create_visit_table);*/
     }
 
 }
