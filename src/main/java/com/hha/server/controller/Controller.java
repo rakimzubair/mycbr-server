@@ -1,6 +1,7 @@
 package com.hha.server.controller;
 
 import com.hha.server.model.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class Controller {
         return clientRepository.findAll();
 
     }
-    
+
     //Exception Handlers
     @ResponseStatus(value = HttpStatus.BAD_REQUEST,
             reason = "Request ID not found.")
@@ -36,7 +37,7 @@ public class Controller {
     }
 }
 
-interface ClientRepository extends CrudRepository<Client, Long> {
+interface ClientRepository extends JpaRepository<Client, Long> {
 
 }
 
