@@ -1,8 +1,11 @@
 package com.hha.server.controller;
 
+import com.hha.server.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class Controller {
@@ -19,8 +22,8 @@ public class Controller {
     }
 
     @GetMapping("/clients")
-    String getAllClients() {
-        return clientRepository.findAll().toString();
+    List<Client> getAllClients() {
+        return clientRepository.findAll();
 
     }
 
