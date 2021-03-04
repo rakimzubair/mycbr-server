@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
+import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 @SpringBootApplication
@@ -81,4 +82,16 @@ public class Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
     }
+
+    @Bean
+    ApplicationRunner applicationRunner(ClientRepository clientRepository) {
+        return args -> {
+            clientRepository.save(new Client(TRUE, "date", "first", "last", 20, "M", "location", 3, "xxx", FALSE, "none", "hr", "hreq", "hgoal", "edr", "edreq", "edgoal", "sr", "sreq", "sgoal"));
+        };
+    }
+}
+
+@Repository
+interface ClientRepository extends JpaRepository<Client, Long> {
+
 }
