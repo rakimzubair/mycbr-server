@@ -2,6 +2,7 @@ package com.hha.server.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.ArrayList;
 
@@ -10,6 +11,10 @@ import java.util.ArrayList;
 public class Client {
     //Saved answers to questions
     //all open to change depending on saving to database
+    @Id
+    @Column
+    private Long clientID;
+
     @Column
     private Boolean consentToInterview;
     @Column
