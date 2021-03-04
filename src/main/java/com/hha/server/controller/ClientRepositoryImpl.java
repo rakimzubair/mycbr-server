@@ -18,10 +18,11 @@ interface ClientRepository extends JpaRepository<Client, Long> {
 
 @Component
 public class ClientRepositoryImpl implements ClientRepository {
+    ClientRepository clientRepository;
 
     @Override
     public List<Client> findAll() {
-        return null;
+        return clientRepository.findAll();
     }
 
     @Override
@@ -41,7 +42,7 @@ public class ClientRepositoryImpl implements ClientRepository {
 
     @Override
     public long count() {
-        return 0;
+        return clientRepository.count();
     }
 
     @Override
@@ -66,7 +67,8 @@ public class ClientRepositoryImpl implements ClientRepository {
 
     @Override
     public <S extends Client> S save(S entity) {
-        return null;
+        clientRepository.save(entity);
+        return entity;
     }
 
     @Override

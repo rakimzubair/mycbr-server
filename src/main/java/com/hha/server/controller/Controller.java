@@ -12,6 +12,7 @@ import static java.lang.Boolean.TRUE;
 
 @RestController
 public class Controller {
+    @Autowired
     private final ClientRepository clientRepository;
 
     public Controller(ClientRepository clientRepository) {
