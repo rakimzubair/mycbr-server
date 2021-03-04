@@ -40,7 +40,6 @@ public class Controller {
     }
 }
 
-@Repository
 interface ClientRepository extends JpaRepository<Client, Long> {
 
 }
