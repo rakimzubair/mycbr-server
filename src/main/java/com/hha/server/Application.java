@@ -86,12 +86,12 @@ public class Application implements CommandLineRunner {
 
     }
 
-    @Bean
+    /*@Bean
     ApplicationRunner applicationRunner(ClientRepository clientRepository) {
         return args -> {
             clientRepository.save(new Client(TRUE, "date", "first", "last", 20, "M", "location", 3, "xxx", FALSE, "none", "hr", "hreq", "hgoal", "edr", "edreq", "edgoal", "sr", "sreq", "sgoal"));
         };
-    }
+    }*/
 }
 
 @Component
