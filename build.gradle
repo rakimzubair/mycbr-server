@@ -12,7 +12,7 @@ plugins {
     id 'java'
 }
 
-group 'demo'
+group 'CHRw'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'org.springframework.boot'
