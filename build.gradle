@@ -12,7 +12,7 @@ plugins {
     id 'java'
 }
 
-group 'CHRw'
+group 'CBR'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'org.springframework.boot'
@@ -33,6 +33,6 @@ dependencies {
 }
 
 task copyDependencies(type: Copy) {
-    from configurations.default
+    from configurations.compile
     into 'dependencies'
 }
