@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 public class Controller {
-    @Autowired
     private final ClientRepository clientRepository;
 
     public Controller(ClientRepository clientRepository) {
@@ -24,7 +23,11 @@ public class Controller {
     @GetMapping("/clients")
     List<Client> getAllClients() {
         return clientRepository.findAll();
+    }
 
+    @GetMapping("/count")
+    long numClients() {
+        return clientRepository.count();
     }
 
     //Exception Handlers
