@@ -1,5 +1,6 @@
 package com.hha.server;
 
+import com.hha.server.controller.ClientRepositoryImpl;
 import com.hha.server.model.Client;
 
 import org.springframework.boot.ApplicationRunner;
@@ -84,14 +85,9 @@ public class Application implements CommandLineRunner {
     }
 
     @Bean
-    ApplicationRunner applicationRunner(ClientRepository clientRepository) {
+    ApplicationRunner applicationRunner(ClientRepositoryImpl clientRepository) {
         return args -> {
             clientRepository.save(new Client(TRUE, "date", "first", "last", 20, "M", "location", 3, "xxx", FALSE, "none", "hr", "hreq", "hgoal", "edr", "edreq", "edgoal", "sr", "sreq", "sgoal"));
         };
     }
-}
-
-@Repository
-interface ClientRepository extends JpaRepository<Client, Long> {
-
 }

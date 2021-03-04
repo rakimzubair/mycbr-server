@@ -2,6 +2,10 @@ package com.hha.server.controller;
 
 import com.hha.server.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
@@ -37,11 +41,6 @@ public class Controller {
     public void badIdExceptionHandler() {
 
     }
-}
-
-@Repository
-interface ClientRepository extends JpaRepository<Client, Long> {
-
 }
 
 
