@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 @RestController
 public class Controller {
     private final ClientRepository clientRepository;
@@ -22,6 +25,7 @@ public class Controller {
 
     @GetMapping("/clients")
     List<Client> getAllClients() {
+        clientRepository.save(new Client(TRUE, "date", "first", "last", 20, "M", "location", 3, "xxx", FALSE, "none", "hr", "hreq", "hgoal", "edr", "edreq", "edgoal", "sr", "sreq", "sgoal"));
         return clientRepository.findAll();
     }
 
