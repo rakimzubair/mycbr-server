@@ -33,8 +33,6 @@ public class Client {
     @Column
     private String caregiverPhoneNumber;
     @Column
-    private ArrayList<String> disabilities = new ArrayList<>();
-    @Column
     private String healthRate;
     @Column
     private String healthRequire;
@@ -49,7 +47,7 @@ public class Client {
     @Column
     private String socialStatusRate;
 
-    public Client(Boolean consentToInterview, String date, String firstName, String lastName, int age, String gender, String location, int villageNumber, String contactPhoneNumber, Boolean caregiverPresent, String caregiverPhoneNumber, ArrayList<String> disabilities, String healthRate, String healthRequire, String healthIndividualGoal, String educationRate, String educationRequire, String educationIndividualGoal, String socialStatusRate, String socialStatusRequire, String socialStatusIndividualGoal) {
+    public Client(Boolean consentToInterview, String date, String firstName, String lastName, int age, String gender, String location, int villageNumber, String contactPhoneNumber, Boolean caregiverPresent, String caregiverPhoneNumber, String healthRate, String healthRequire, String healthIndividualGoal, String educationRate, String educationRequire, String educationIndividualGoal, String socialStatusRate, String socialStatusRequire, String socialStatusIndividualGoal) {
         this.consentToInterview = consentToInterview;
         this.date = date;
         this.firstName = firstName;
@@ -61,7 +59,6 @@ public class Client {
         this.contactPhoneNumber = contactPhoneNumber;
         this.caregiverPresent = caregiverPresent;
         this.caregiverPhoneNumber = caregiverPhoneNumber;
-        this.disabilities = disabilities;
         this.healthRate = healthRate;
         this.healthRequire = healthRequire;
         this.healthIndividualGoal = healthIndividualGoal;
@@ -167,7 +164,7 @@ public class Client {
         this.caregiverPhoneNumber = caregiverPhoneNumber;
     }
 
-    public void addToDisabilities(String disability){
+    /*public void addToDisabilities(String disability){
         disabilities.add(disability);
     }
 
@@ -182,7 +179,7 @@ public class Client {
 
     public Boolean isDisabilitiesEmpty(){
         return disabilities.isEmpty();
-    }
+    }*/
 
     public String getHealthRate() {
         return healthRate;
