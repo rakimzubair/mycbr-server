@@ -1,5 +1,6 @@
 package com.hha.server.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.ArrayList;
@@ -9,24 +10,43 @@ import java.util.ArrayList;
 public class Client {
     //Saved answers to questions
     //all open to change depending on saving to database
+    @Column
     private Boolean consentToInterview;
+    @Column
     private String date;
+    @Column
     private String firstName;
+    @Column
     private String lastName;
+    @Column
     private int age = -1;
+    @Column
     private String gender;
+    @Column
     private String location;
+    @Column
     private int villageNumber = -1;
+    @Column
     private String contactPhoneNumber;
+    @Column
     private Boolean caregiverPresent;
+    @Column
     private String caregiverPhoneNumber;
+    @Column
     private ArrayList<String> disabilities = new ArrayList<>();
+    @Column
     private String healthRate;
+    @Column
     private String healthRequire;
+    @Column
     private String healthIndividualGoal;
+    @Column
     private String educationRate;
+    @Column
     private String educationRequire;
+    @Column
     private String educationIndividualGoal;
+    @Column
     private String socialStatusRate;
 
     public Client(Boolean consentToInterview, String date, String firstName, String lastName, int age, String gender, String location, int villageNumber, String contactPhoneNumber, Boolean caregiverPresent, String caregiverPhoneNumber, ArrayList<String> disabilities, String healthRate, String healthRequire, String healthIndividualGoal, String educationRate, String educationRequire, String educationIndividualGoal, String socialStatusRate, String socialStatusRequire, String socialStatusIndividualGoal) {
