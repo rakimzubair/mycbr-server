@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 public class Controller {
-    @Autowired
     private final ClientRepository clientRepository;
 
     public Controller(ClientRepository clientRepository) {
