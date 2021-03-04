@@ -83,6 +83,9 @@ public class Application implements CommandLineRunner {
 
     }
 
+    @Repository
+    interface ClientRepository extends JpaRepository <Client, Long> {}
+
     @Bean
     ApplicationRunner applicationRunner(ClientRepository clientRepository) {
         return args -> {
@@ -91,5 +94,5 @@ public class Application implements CommandLineRunner {
     }
 }
 
-interface ClientRepository extends JpaRepository <Client, Long> {}
+
 
