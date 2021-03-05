@@ -26,7 +26,7 @@ public class Controller {
 
     //SYNC ENDPOINTS - CLIENT
     //1. App has no data
-    @GetMapping("/no-client")
+    @GetMapping("/get-clients")
     List<Client> emptySync() {
         return clientRepository.findAll();
     }
