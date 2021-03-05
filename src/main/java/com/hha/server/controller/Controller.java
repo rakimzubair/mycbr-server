@@ -27,9 +27,17 @@ public class Controller {
         return "Hello World!";
     }
 
-    @GetMapping("/clients")
-    List<Client> getAllClients() {
-        clientRepository.save(new Client(TRUE, "date", "first", "last", 20, "M", "location", 3, "xxx", FALSE, "none", "hr", "hreq", "hgoal", "edr", "edreq", "edgoal", "sr", "sreq", "sgoal"));
+    @PostMapping("/clients")
+    List<Client> sync(@RequestBody List<Client> clients) {
+        //adding new data to database
+        for (Client client : clients) {
+            clientRepository.save(new Client(client.getConsentToInterview(), client.getDate(), client.getFirstName(),
+                    client.getLastName(), client.getAge(), client.getGender(), client.getLocation(), client.getVillageNumber(),
+                    client.getContactPhoneNumber(), client.getCaregiverPresent(), client.getCaregiverPhoneNumber(), client.getHealthRate(),
+                    client.getHealthRequire(), client.getHealthIndividualGoal(), client.getEducationRate(), client.getEducationRequire(),
+                    client.getEducationIndividualGoal(), client.getSocialStatusRate(), client.getSocialStatusRequire(), client.getSocialStatusIndividualGoal()));
+        }
+
         return clientRepository.findAll();
     }
 
