@@ -11,95 +11,95 @@ public class Client {
     //Saved answers to questions
     //all open to change depending on saving to database
     @Id
-    @Column (name = "ID")
+    @Column
     @JsonProperty("ID")
     private String ID;
 
-    @Column(name = "CONSENT")
+    @Column
     @JsonProperty("CONSENT")
     private String CONSENT;
 
-    @Column(name = "DATE")
+    @Column
     @JsonProperty("DATE")
     private String DATE;
 
-    @Column (name = "FIRST_NAME")
+    @Column
     @JsonProperty("FIRST_NAME")
     private String FIRST_NAME;
 
-    @Column (name = "LAST_NAME")
+    @Column
     @JsonProperty("LAST_NAME")
     private String LAST_NAME;
 
-    @Column (name = "AGE")
+    @Column
     @JsonProperty("AGE")
     private String AGE;
 
-    @Column (name = "GENDER")
+    @Column
     @JsonProperty("GENDER")
     private String GENDER;
 
-    @Column (name = "LOCATION")
+    @Column
     @JsonProperty("LOCATION")
     private String LOCATION;
 
-    @Column (name = "VILLAGE_NUMBER")
+    @Column
     @JsonProperty("VILLAGE_NUMBER")
     private String VILLAGE_NUMBER;
 
-    @Column (name = "CONTACT")
+    @Column
     @JsonProperty("CONTACT")
     private String CONTACT;
 
-    @Column (name = "CAREGIVER_PRESENCE")
+    @Column
     @JsonProperty("CAREGIVER_PRESENCE")
     private String CAREGIVER_PRESENCE;
 
-    @Column (name = "CAREGIVER_NUMBER")
+    @Column
     @JsonProperty("CAREGIVER_NUMBER")
     private String CAREGIVER_NUMBER;
 
-    @Column (name = "DISABILITY")
+    @Column
     @JsonProperty("DISABILITY")
     private String DISABILITY;
 
-    @Column (name = "HEALTH_RATE")
+    @Column
     @JsonProperty("HEALTH_RATE")
     private String HEALTH_RATE;
 
-    @Column (name = "HEALTH_REQUIREMENT")
+    @Column
     @JsonProperty("HEALTH_REQUIREMENT")
     private String HEALTH_REQUIREMENT;
 
-    @Column (name = "HEALTH_GOAL")
+    @Column
     @JsonProperty("HEALTH_GOAL")
     private String HEALTH_GOAL;
 
-    @Column (name = "EDUCATION_RATE")
+    @Column
     @JsonProperty("EDUCATION_RATE")
     private String EDUCATION_RATE;
 
-    @Column (name = "EDUCATION_REQUIRE")
+    @Column
     @JsonProperty("EDUCATION_REQUIRE")
     private String EDUCATION_REQUIRE;
 
-    @Column (name = "EDUCATION_GOAL")
+    @Column
     @JsonProperty("EDUCATION_GOAL")
     private String EDUCATION_GOAL;
 
-    @Column (name = "SOCIAL_RATE")
+    @Column
     @JsonProperty("SOCIAL_RATE")
     private String SOCIAL_RATE;
 
-    @Column (name = "SOCIAL_REQUIREMENT")
+    @Column
     @JsonProperty("SOCIAL_REQUIREMENT")
     private String SOCIAL_REQUIREMENT;
 
-    @Column (name = "SOCIAL_GOAL")
+    @Column
     @JsonProperty("SOCIAL_GOAL")
     private String SOCIAL_GOAL;
 
-    @Column (name = "IS_SYNCED")
+    @Column
     @JsonProperty("IS_SYNCED")
     private String IS_SYNCED;
 
