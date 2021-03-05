@@ -22,14 +22,39 @@ public class Controller {
         this.clientRepository = clientRepository;
     }
 
-    /*@GetMapping
+    @GetMapping
     String hello() {
-        return "Hello World!";
-    }*/
+        return "myCBR Server";
+    }
 
-    @GetMapping("/clients")
-    List<Client> sync(@RequestBody List<Client> clients) {
-        //adding new data to database
+    @GetMapping("/count")
+    long numClients() {
+        return clientRepository.count();
+    }
+
+
+    //SYNC ENDPOINTS
+    //1. App has no data
+    @GetMapping("/no-client")
+    List<Client> emptySync() {
+        return clientRepository.findAll();
+    }
+
+    //2. App has only one entry
+    @PostMapping("/client")
+    List<Client> singleSync(@RequestBody Client client) {
+        clientRepository.save(new Client(client.getConsentToInterview(), client.getDate(), client.getFirstName(),
+                    client.getLastName(), client.getAge(), client.getGender(), client.getLocation(), client.getVillageNumber(),
+                    client.getContactPhoneNumber(), client.getCaregiverPresent(), client.getCaregiverPhoneNumber(), client.getHealthRate(),
+                    client.getHealthRequire(), client.getHealthIndividualGoal(), client.getEducationRate(), client.getEducationRequire(),
+                    client.getEducationIndividualGoal(), client.getSocialStatusRate(), client.getSocialStatusRequire(), client.getSocialStatusIndividualGoal()));
+
+        return clientRepository.findAll();
+    }
+
+    //3. App has multiple entries
+    @PostMapping("/clients")
+    List<Client> multipleSync(@RequestBody List<Client> clients) {
         for (Client client : clients) {
             clientRepository.save(new Client(client.getConsentToInterview(), client.getDate(), client.getFirstName(),
                     client.getLastName(), client.getAge(), client.getGender(), client.getLocation(), client.getVillageNumber(),
@@ -39,11 +64,6 @@ public class Controller {
         }
 
         return clientRepository.findAll();
-    }
-
-    @GetMapping("/count")
-    long numClients() {
-        return clientRepository.count();
     }
 
     //Exception Handlers
