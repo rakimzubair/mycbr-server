@@ -10,10 +10,10 @@ public class Client {
     //all open to change depending on saving to database
     @Id
     @Column (name = "ID")
-    private Long ID;
+    private String ID;
 
     @Column(name = "CONSENT")
-    private Boolean CONSENT;
+    private String CONSENT;
     @Column(name = "DATE")
     private String DATE;
     @Column (name = "FIRST_NAME")
@@ -21,17 +21,17 @@ public class Client {
     @Column (name = "LAST_NAME")
     private String LAST_NAME;
     @Column (name = "AGE")
-    private int AGE;
+    private String AGE;
     @Column (name = "GENDER")
     private String GENDER;
     @Column (name = "LOCATION")
     private String LOCATION;
     @Column (name = "VILLAGE_NUMBER")
-    private int VILLAGE_NUMBER;
+    private String VILLAGE_NUMBER;
     @Column (name = "CONTACT")
     private String CONTACT;
     @Column (name = "CAREGIVER_PRESENCE")
-    private Boolean CAREGIVER_PRESENCE;
+    private String CAREGIVER_PRESENCE;
     @Column (name = "CAREGIVER_NUMBER")
     private String CAREGIVER_NUMBER;
     @Column (name = "DISABILITY")
@@ -55,12 +55,12 @@ public class Client {
     @Column (name = "SOCIAL_GOAL")
     private String SOCIAL_GOAL;
     @Column (name = "IS_SYNCED")
-    private int IS_SYNCED;
+    private String IS_SYNCED;
 
 
     public Client() {}
 
-    public Client(Long ID, Boolean CONSENT, String DATE, String FIRST_NAME, String LAST_NAME, int AGE, String GENDER, String LOCATION, int VILLAGE_NUMBER, String CONTACT, Boolean CAREGIVER_PRESENCE, String CAREGIVER_NUMBER, String DISABILITY, String HEALTH_RATE, String HEALTH_REQUIREMENT, String HEALTH_GOAL, String EDUCATION_RATE, String EDUCATION_REQUIRE, String EDUCATION_GOAL, String SOCIAL_RATE, String SOCIAL_REQUIREMENT, String SOCIAL_GOAL, int IS_SYNCED) {
+    public Client(String ID, String CONSENT, String DATE, String FIRST_NAME, String LAST_NAME, String AGE, String GENDER, String LOCATION, String VILLAGE_NUMBER, String CONTACT, String CAREGIVER_PRESENCE, String CAREGIVER_NUMBER, String DISABILITY, String HEALTH_RATE, String HEALTH_REQUIREMENT, String HEALTH_GOAL, String EDUCATION_RATE, String EDUCATION_REQUIRE, String EDUCATION_GOAL, String SOCIAL_RATE, String SOCIAL_REQUIREMENT, String SOCIAL_GOAL, String IS_SYNCED) {
         this.ID = ID;
         this.CONSENT = CONSENT;
         this.DATE = DATE;
@@ -86,19 +86,19 @@ public class Client {
         this.IS_SYNCED = IS_SYNCED;
     }
 
-    public Long getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(Long ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
-    public Boolean getCONSENT() {
+    public String getCONSENT() {
         return CONSENT;
     }
 
-    public void setCONSENT(Boolean CONSENT) {
+    public void setCONSENT(String CONSENT) {
         this.CONSENT = CONSENT;
     }
 
@@ -126,11 +126,11 @@ public class Client {
         this.LAST_NAME = LAST_NAME;
     }
 
-    public int getAGE() {
+    public String getAGE() {
         return AGE;
     }
 
-    public void setAGE(int AGE) {
+    public void setAGE(String AGE) {
         this.AGE = AGE;
     }
 
@@ -150,11 +150,11 @@ public class Client {
         this.LOCATION = LOCATION;
     }
 
-    public int getVILLAGE_NUMBER() {
+    public String getVILLAGE_NUMBER() {
         return VILLAGE_NUMBER;
     }
 
-    public void setVILLAGE_NUMBER(int VILLAGE_NUMBER) {
+    public void setVILLAGE_NUMBER(String VILLAGE_NUMBER) {
         this.VILLAGE_NUMBER = VILLAGE_NUMBER;
     }
 
@@ -166,11 +166,11 @@ public class Client {
         this.CONTACT = CONTACT;
     }
 
-    public Boolean getCAREGIVER_PRESENCE() {
+    public String getCAREGIVER_PRESENCE() {
         return CAREGIVER_PRESENCE;
     }
 
-    public void setCAREGIVER_PRESENCE(Boolean CAREGIVER_PRESENCE) {
+    public void setCAREGIVER_PRESENCE(String CAREGIVER_PRESENCE) {
         this.CAREGIVER_PRESENCE = CAREGIVER_PRESENCE;
     }
 
@@ -262,11 +262,11 @@ public class Client {
         this.SOCIAL_GOAL = SOCIAL_GOAL;
     }
 
-    public int getIS_SYNCED() {
+    public String getIS_SYNCED() {
         return IS_SYNCED;
     }
 
-    public void setIS_SYNCED(int IS_SYNCED) {
+    public void setIS_SYNCED(String IS_SYNCED) {
         this.IS_SYNCED = IS_SYNCED;
     }
 }
