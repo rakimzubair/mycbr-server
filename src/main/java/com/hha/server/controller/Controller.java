@@ -22,10 +22,10 @@ public class Controller {
         this.clientRepository = clientRepository;
     }
 
-    @GetMapping
+    /*@GetMapping
     String hello() {
         return "Hello World!";
-    }
+    }*/
 
     @PostMapping("/clients")
     List<Client> sync(@RequestBody List<Client> clients) {
