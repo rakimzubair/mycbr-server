@@ -34,11 +34,6 @@ public class Controller {
     //1. App has no data
     @GetMapping("/no-client")
     List<Client> emptySync() {
-        clientRepository.save(new Client("id", "1", "date", "fname",
-                "lname", "10", "m", "location", "2",
-                "xxx", "0", "", "disability",
-                "hr", "hreq", "hgoal", "er", "ereq",
-                "egoal", "sr", "sreq", "goal", "1"));
         return clientRepository.findAll();
     }
 
