@@ -19,10 +19,16 @@ public class Controller {
         this.clientRepository = clientRepository;
     }
 
+    @GetMapping
+    String homepage() {
+        return "myCBR Server";
+    }
+
     @GetMapping("/count")
     long numClients() {
         return clientRepository.count();
     }
+
 
     //SYNC ENDPOINTS - CLIENT
     //1. App has no data
