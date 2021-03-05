@@ -27,7 +27,7 @@ public class Controller {
         return "Hello World!";
     }*/
 
-    @PostMapping("/clients")
+    @GetMapping("/clients")
     List<Client> sync(@RequestBody List<Client> clients) {
         //adding new data to database
         for (Client client : clients) {
