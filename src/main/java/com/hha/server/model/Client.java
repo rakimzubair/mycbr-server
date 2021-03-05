@@ -1,5 +1,7 @@
 package com.hha.server.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 
@@ -10,51 +12,95 @@ public class Client {
     //all open to change depending on saving to database
     @Id
     @Column (name = "ID")
+    @JsonProperty("ID")
     private String ID;
 
     @Column(name = "CONSENT")
+    @JsonProperty("CONSENT")
     private String CONSENT;
+
     @Column(name = "DATE")
+    @JsonProperty("DATE")
     private String DATE;
+
     @Column (name = "FIRST_NAME")
+    @JsonProperty("FIRST_NAME")
     private String FIRST_NAME;
+
     @Column (name = "LAST_NAME")
+    @JsonProperty("LAST_NAME")
     private String LAST_NAME;
+
     @Column (name = "AGE")
+    @JsonProperty("AGE")
     private String AGE;
+
     @Column (name = "GENDER")
+    @JsonProperty("GENDER")
     private String GENDER;
+
     @Column (name = "LOCATION")
+    @JsonProperty("LOCATION")
     private String LOCATION;
+
     @Column (name = "VILLAGE_NUMBER")
+    @JsonProperty("VILLAGE_NUMBER")
     private String VILLAGE_NUMBER;
+
     @Column (name = "CONTACT")
+    @JsonProperty("CONTACT")
     private String CONTACT;
+
     @Column (name = "CAREGIVER_PRESENCE")
+    @JsonProperty("CAREGIVER_PRESENCE")
     private String CAREGIVER_PRESENCE;
+
     @Column (name = "CAREGIVER_NUMBER")
+    @JsonProperty("CAREGIVER_NUMBER")
     private String CAREGIVER_NUMBER;
+
     @Column (name = "DISABILITY")
+    @JsonProperty("DISABILITY")
     private String DISABILITY;
+
     @Column (name = "HEALTH_RATE")
+    @JsonProperty("HEALTH_RATE")
     private String HEALTH_RATE;
+
     @Column (name = "HEALTH_REQUIREMENT")
+    @JsonProperty("HEALTH_REQUIREMENT")
     private String HEALTH_REQUIREMENT;
+
     @Column (name = "HEALTH_GOAL")
+    @JsonProperty("HEALTH_GOAL")
     private String HEALTH_GOAL;
+
     @Column (name = "EDUCATION_RATE")
+    @JsonProperty("EDUCATION_RATE")
     private String EDUCATION_RATE;
+
     @Column (name = "EDUCATION_REQUIRE")
+    @JsonProperty("EDUCATION_REQUIRE")
     private String EDUCATION_REQUIRE;
+
     @Column (name = "EDUCATION_GOAL")
+    @JsonProperty("EDUCATION_GOAL")
     private String EDUCATION_GOAL;
+
     @Column (name = "SOCIAL_RATE")
+    @JsonProperty("SOCIAL_RATE")
     private String SOCIAL_RATE;
+
     @Column (name = "SOCIAL_REQUIREMENT")
+    @JsonProperty("SOCIAL_REQUIREMENT")
     private String SOCIAL_REQUIREMENT;
+
     @Column (name = "SOCIAL_GOAL")
+    @JsonProperty("SOCIAL_GOAL")
     private String SOCIAL_GOAL;
+
     @Column (name = "IS_SYNCED")
+    @JsonProperty("IS_SYNCED")
     private String IS_SYNCED;
 
 
