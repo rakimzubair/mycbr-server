@@ -34,6 +34,7 @@ public class Controller {
     //1. App has no data
     @GetMapping("/get-clients")
     List<Client> emptySync() {
+        //
         return clientRepository.findAll();
     }
 
