@@ -9,250 +9,264 @@ public class Client {
     //Saved answers to questions
     //all open to change depending on saving to database
     @Id
-    @Column
-    @GeneratedValue
-    private Long clientID;
+    @Column (name = "ID")
+    private Long ID;
 
-    @Column
-    private Boolean consentToInterview;
-    @Column
-    private String date;
-    @Column
-    private String firstName;
-    @Column
-    private String lastName;
-    @Column
-    private int age = -1;
-    @Column
-    private String gender;
-    @Column
-    private String location;
-    @Column
-    private int villageNumber = -1;
-    @Column
-    private String contactPhoneNumber;
-    @Column
-    private Boolean caregiverPresent;
-    @Column
-    private String caregiverPhoneNumber;
-    @Column
-    private String healthRate;
-    @Column
-    private String healthRequire;
-    @Column
-    private String healthIndividualGoal;
-    @Column
-    private String educationRate;
-    @Column
-    private String educationRequire;
-    @Column
-    private String educationIndividualGoal;
-    @Column
-    private String socialStatusRate;
+    @Column(name = "CONSENT")
+    private Boolean CONSENT;
+    @Column(name = "DATE")
+    private String DATE;
+    @Column (name = "FIRST_NAME")
+    private String FIRST_NAME;
+    @Column (name = "LAST_NAME")
+    private String LAST_NAME;
+    @Column (name = "AGE")
+    private int AGE;
+    @Column (name = "GENDER")
+    private String GENDER;
+    @Column (name = "LOCATION")
+    private String LOCATION;
+    @Column (name = "VILLAGE_NUMBER")
+    private int VILLAGE_NUMBER;
+    @Column (name = "CONTACT")
+    private String CONTACT;
+    @Column (name = "CAREGIVER_PRESENCE")
+    private Boolean CAREGIVER_PRESENCE;
+    @Column (name = "CAREGIVER_NUMBER")
+    private String CAREGIVER_NUMBER;
+    @Column (name = "DISABILITY")
+    private String DISABILITY;
+    @Column (name = "HEALTH_RATE")
+    private String HEALTH_RATE;
+    @Column (name = "HEALTH_REQUIREMENT")
+    private String HEALTH_REQUIREMENT;
+    @Column (name = "HEALTH_GOAL")
+    private String HEALTH_GOAL;
+    @Column (name = "EDUCATION_RATE")
+    private String EDUCATION_RATE;
+    @Column (name = "EDUCATION_REQUIRE")
+    private String EDUCATION_REQUIRE;
+    @Column (name = "EDUCATION_GOAL")
+    private String EDUCATION_GOAL;
+    @Column (name = "SOCIAL_RATE")
+    private String SOCIAL_RATE;
+    @Column (name = "SOCIAL_REQUIREMENT")
+    private String SOCIAL_REQUIREMENT;
+    @Column (name = "SOCIAL_GOAL")
+    private String SOCIAL_GOAL;
+    @Column (name = "IS_SYNCED")
+    private int IS_SYNCED;
 
-    public Client(Boolean consentToInterview, String date, String firstName, String lastName, int age, String gender, String location, int villageNumber, String contactPhoneNumber, Boolean caregiverPresent, String caregiverPhoneNumber, String healthRate, String healthRequire, String healthIndividualGoal, String educationRate, String educationRequire, String educationIndividualGoal, String socialStatusRate, String socialStatusRequire, String socialStatusIndividualGoal) {
-        this.consentToInterview = consentToInterview;
-        this.date = date;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.gender = gender;
-        this.location = location;
-        this.villageNumber = villageNumber;
-        this.contactPhoneNumber = contactPhoneNumber;
-        this.caregiverPresent = caregiverPresent;
-        this.caregiverPhoneNumber = caregiverPhoneNumber;
-        this.healthRate = healthRate;
-        this.healthRequire = healthRequire;
-        this.healthIndividualGoal = healthIndividualGoal;
-        this.educationRate = educationRate;
-        this.educationRequire = educationRequire;
-        this.educationIndividualGoal = educationIndividualGoal;
-        this.socialStatusRate = socialStatusRate;
-        this.socialStatusRequire = socialStatusRequire;
-        this.socialStatusIndividualGoal = socialStatusIndividualGoal;
+
+    public Client() {}
+
+    public Client(Long ID, Boolean CONSENT, String DATE, String FIRST_NAME, String LAST_NAME, int AGE, String GENDER, String LOCATION, int VILLAGE_NUMBER, String CONTACT, Boolean CAREGIVER_PRESENCE, String CAREGIVER_NUMBER, String DISABILITY, String HEALTH_RATE, String HEALTH_REQUIREMENT, String HEALTH_GOAL, String EDUCATION_RATE, String EDUCATION_REQUIRE, String EDUCATION_GOAL, String SOCIAL_RATE, String SOCIAL_REQUIREMENT, String SOCIAL_GOAL, int IS_SYNCED) {
+        this.ID = ID;
+        this.CONSENT = CONSENT;
+        this.DATE = DATE;
+        this.FIRST_NAME = FIRST_NAME;
+        this.LAST_NAME = LAST_NAME;
+        this.AGE = AGE;
+        this.GENDER = GENDER;
+        this.LOCATION = LOCATION;
+        this.VILLAGE_NUMBER = VILLAGE_NUMBER;
+        this.CONTACT = CONTACT;
+        this.CAREGIVER_PRESENCE = CAREGIVER_PRESENCE;
+        this.CAREGIVER_NUMBER = CAREGIVER_NUMBER;
+        this.DISABILITY = DISABILITY;
+        this.HEALTH_RATE = HEALTH_RATE;
+        this.HEALTH_REQUIREMENT = HEALTH_REQUIREMENT;
+        this.HEALTH_GOAL = HEALTH_GOAL;
+        this.EDUCATION_RATE = EDUCATION_RATE;
+        this.EDUCATION_REQUIRE = EDUCATION_REQUIRE;
+        this.EDUCATION_GOAL = EDUCATION_GOAL;
+        this.SOCIAL_RATE = SOCIAL_RATE;
+        this.SOCIAL_REQUIREMENT = SOCIAL_REQUIREMENT;
+        this.SOCIAL_GOAL = SOCIAL_GOAL;
+        this.IS_SYNCED = IS_SYNCED;
     }
 
-    private String socialStatusRequire;
-    private String socialStatusIndividualGoal;
-
-    public Client() {
+    public Long getID() {
+        return ID;
     }
 
-    public Boolean getConsentToInterview() {
-        return consentToInterview;
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 
-    public void setConsentToInterview(Boolean consentToInterview) {
-        this.consentToInterview = consentToInterview;
+    public Boolean getCONSENT() {
+        return CONSENT;
     }
 
-    public String getDate() {
-        return date;
+    public void setCONSENT(Boolean CONSENT) {
+        this.CONSENT = CONSENT;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public String getDATE() {
+        return DATE;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setDATE(String DATE) {
+        this.DATE = DATE;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getFIRST_NAME() {
+        return FIRST_NAME;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setFIRST_NAME(String FIRST_NAME) {
+        this.FIRST_NAME = FIRST_NAME;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getLAST_NAME() {
+        return LAST_NAME;
     }
 
-    public int getAge() {
-        return age;
+    public void setLAST_NAME(String LAST_NAME) {
+        this.LAST_NAME = LAST_NAME;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public int getAGE() {
+        return AGE;
     }
 
-    public String getGender() {
-        return gender;
+    public void setAGE(int AGE) {
+        this.AGE = AGE;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public String getGENDER() {
+        return GENDER;
     }
 
-    public String getLocation() {
-        return location;
+    public void setGENDER(String GENDER) {
+        this.GENDER = GENDER;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public String getLOCATION() {
+        return LOCATION;
     }
 
-    public int getVillageNumber() {
-        return villageNumber;
+    public void setLOCATION(String LOCATION) {
+        this.LOCATION = LOCATION;
     }
 
-    public void setVillageNumber(int villageNumber) {
-        this.villageNumber = villageNumber;
+    public int getVILLAGE_NUMBER() {
+        return VILLAGE_NUMBER;
     }
 
-    public String getContactPhoneNumber() {
-        return contactPhoneNumber;
+    public void setVILLAGE_NUMBER(int VILLAGE_NUMBER) {
+        this.VILLAGE_NUMBER = VILLAGE_NUMBER;
     }
 
-    public void setContactPhoneNumber(String contactPhoneNumber) {
-        this.contactPhoneNumber = contactPhoneNumber;
+    public String getCONTACT() {
+        return CONTACT;
     }
 
-    public Boolean getCaregiverPresent() {
-        return caregiverPresent;
+    public void setCONTACT(String CONTACT) {
+        this.CONTACT = CONTACT;
     }
 
-    public void setCaregiverPresent(Boolean caregiverPresent) {
-        this.caregiverPresent = caregiverPresent;
+    public Boolean getCAREGIVER_PRESENCE() {
+        return CAREGIVER_PRESENCE;
     }
 
-    public String getCaregiverPhoneNumber() {
-        return caregiverPhoneNumber;
+    public void setCAREGIVER_PRESENCE(Boolean CAREGIVER_PRESENCE) {
+        this.CAREGIVER_PRESENCE = CAREGIVER_PRESENCE;
     }
 
-    public void setCaregiverPhoneNumber(String caregiverPhoneNumber) {
-        this.caregiverPhoneNumber = caregiverPhoneNumber;
+    public String getCAREGIVER_NUMBER() {
+        return CAREGIVER_NUMBER;
     }
 
-    /*public void addToDisabilities(String disability){
-        disabilities.add(disability);
+    public void setCAREGIVER_NUMBER(String CAREGIVER_NUMBER) {
+        this.CAREGIVER_NUMBER = CAREGIVER_NUMBER;
     }
 
-    public void clearDisabilities(){
-        disabilities.clear();
+    public String getDISABILITY() {
+        return DISABILITY;
     }
 
-    public ArrayList<String> getDisabilities() {
-        return this.disabilities;
-
+    public void setDISABILITY(String DISABILITY) {
+        this.DISABILITY = DISABILITY;
     }
 
-    public Boolean isDisabilitiesEmpty(){
-        return disabilities.isEmpty();
-    }*/
-
-    public String getHealthRate() {
-        return healthRate;
+    public String getHEALTH_RATE() {
+        return HEALTH_RATE;
     }
 
-    public void setHealthRate(String healthRate) {
-        this.healthRate = healthRate;
+    public void setHEALTH_RATE(String HEALTH_RATE) {
+        this.HEALTH_RATE = HEALTH_RATE;
     }
 
-    public String getHealthRequire() {
-        return healthRequire;
+    public String getHEALTH_REQUIREMENT() {
+        return HEALTH_REQUIREMENT;
     }
 
-    public void setHealthRequire(String healthRequire) {
-        this.healthRequire = healthRequire;
+    public void setHEALTH_REQUIREMENT(String HEALTH_REQUIREMENT) {
+        this.HEALTH_REQUIREMENT = HEALTH_REQUIREMENT;
     }
 
-    public String getHealthIndividualGoal() {
-        return healthIndividualGoal;
+    public String getHEALTH_GOAL() {
+        return HEALTH_GOAL;
     }
 
-    public void setHealthIndividualGoal(String healthIndividualGoal) {
-        this.healthIndividualGoal = healthIndividualGoal;
+    public void setHEALTH_GOAL(String HEALTH_GOAL) {
+        this.HEALTH_GOAL = HEALTH_GOAL;
     }
 
-    public String getEducationRate() {
-        return educationRate;
+    public String getEDUCATION_RATE() {
+        return EDUCATION_RATE;
     }
 
-    public void setEducationRate(String educationRate) {
-        this.educationRate = educationRate;
+    public void setEDUCATION_RATE(String EDUCATION_RATE) {
+        this.EDUCATION_RATE = EDUCATION_RATE;
     }
 
-    public String getEducationRequire() {
-        return educationRequire;
+    public String getEDUCATION_REQUIRE() {
+        return EDUCATION_REQUIRE;
     }
 
-    public void setEducationRequire(String educationRequire) {
-        this.educationRequire = educationRequire;
+    public void setEDUCATION_REQUIRE(String EDUCATION_REQUIRE) {
+        this.EDUCATION_REQUIRE = EDUCATION_REQUIRE;
     }
 
-    public String getEducationIndividualGoal() {
-        return educationIndividualGoal;
+    public String getEDUCATION_GOAL() {
+        return EDUCATION_GOAL;
     }
 
-    public void setEducationIndividualGoal(String educationIndividualGoal) {
-        this.educationIndividualGoal = educationIndividualGoal;
+    public void setEDUCATION_GOAL(String EDUCATION_GOAL) {
+        this.EDUCATION_GOAL = EDUCATION_GOAL;
     }
 
-    public String getSocialStatusRate() {
-        return socialStatusRate;
+    public String getSOCIAL_RATE() {
+        return SOCIAL_RATE;
     }
 
-    public void setSocialStatusRate(String socialStatusRate) {
-        this.socialStatusRate = socialStatusRate;
+    public void setSOCIAL_RATE(String SOCIAL_RATE) {
+        this.SOCIAL_RATE = SOCIAL_RATE;
     }
 
-    public String getSocialStatusRequire() {
-        return socialStatusRequire;
+    public String getSOCIAL_REQUIREMENT() {
+        return SOCIAL_REQUIREMENT;
     }
 
-    public void setSocialStatusRequire(String socialStatusRequire) {
-        this.socialStatusRequire = socialStatusRequire;
+    public void setSOCIAL_REQUIREMENT(String SOCIAL_REQUIREMENT) {
+        this.SOCIAL_REQUIREMENT = SOCIAL_REQUIREMENT;
     }
 
-    public String getSocialStatusIndividualGoal() {
-        return socialStatusIndividualGoal;
+    public String getSOCIAL_GOAL() {
+        return SOCIAL_GOAL;
     }
 
-    public void setSocialStatusIndividualGoal(String socialStatusIndividualGoal) {
-        this.socialStatusIndividualGoal = socialStatusIndividualGoal;
+    public void setSOCIAL_GOAL(String SOCIAL_GOAL) {
+        this.SOCIAL_GOAL = SOCIAL_GOAL;
+    }
+
+    public int getIS_SYNCED() {
+        return IS_SYNCED;
+    }
+
+    public void setIS_SYNCED(int IS_SYNCED) {
+        this.IS_SYNCED = IS_SYNCED;
     }
 }
