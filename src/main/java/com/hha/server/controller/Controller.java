@@ -3,6 +3,7 @@ package com.hha.server.controller;
 import com.hha.server.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
@@ -35,18 +36,6 @@ public class Controller {
     @GetMapping("/get-clients")
     List<Client> emptySync() {
         //
-        return clientRepository.findAll();
-    }
-
-    //2. App has only one entry
-    @PostMapping("/client")
-    List<Client> singleSync(@RequestBody Client client) {
-        clientRepository.save(new Client(client. getID(), client.getCONSENT(), client.getDATE(), client.getFIRST_NAME(),
-                    client.getLAST_NAME(), client.getAGE(), client.getGENDER(), client.getLOCATION(), client.getVILLAGE_NUMBER(),
-                    client.getCONTACT(), client.getCAREGIVER_PRESENCE(), client.getCAREGIVER_NUMBER(), client.getDISABILITY(),
-                    client.getHEALTH_RATE(), client.getHEALTH_REQUIREMENT(), client.getHEALTH_GOAL(), client.getEDUCATION_RATE(), client.getEDUCATION_REQUIRE(),
-                    client.getEDUCATION_GOAL(), client.getSOCIAL_RATE(), client.getSOCIAL_REQUIREMENT(), client.getSOCIAL_GOAL(), "1"));
-
         return clientRepository.findAll();
     }
 
