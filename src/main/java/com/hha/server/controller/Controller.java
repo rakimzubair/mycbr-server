@@ -21,7 +21,7 @@ public class Controller {
 
     @GetMapping
     String homepage() {
-        return "myCBR Server";
+        return "Welcome to myCBR Server!";
     }
 
     @GetMapping("/count")
