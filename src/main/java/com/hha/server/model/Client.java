@@ -11,95 +11,72 @@ public class Client {
     //Saved answers to questions
     //all open to change depending on saving to database
     @Id
-    @Column
     @JsonProperty("ID")
     private String ID;
 
-    @Column
     @JsonProperty("CONSENT")
     private String CONSENT;
 
-    @Column
     @JsonProperty("DATE")
     private String DATE;
 
-    @Column
     @JsonProperty("FIRST_NAME")
     private String FIRST_NAME;
 
-    @Column
     @JsonProperty("LAST_NAME")
     private String LAST_NAME;
 
-    @Column
     @JsonProperty("AGE")
     private String AGE;
 
-    @Column
     @JsonProperty("GENDER")
     private String GENDER;
 
-    @Column
     @JsonProperty("LOCATION")
     private String LOCATION;
 
-    @Column
     @JsonProperty("VILLAGE_NUMBER")
     private String VILLAGE_NUMBER;
 
-    @Column
     @JsonProperty("CONTACT")
     private String CONTACT;
 
-    @Column
     @JsonProperty("CAREGIVER_PRESENCE")
     private String CAREGIVER_PRESENCE;
 
-    @Column
     @JsonProperty("CAREGIVER_NUMBER")
     private String CAREGIVER_NUMBER;
 
-    @Column
     @JsonProperty("DISABILITY")
     private String DISABILITY;
 
-    @Column
     @JsonProperty("HEALTH_RATE")
     private String HEALTH_RATE;
 
-    @Column
     @JsonProperty("HEALTH_REQUIREMENT")
     private String HEALTH_REQUIREMENT;
 
-    @Column
     @JsonProperty("HEALTH_GOAL")
     private String HEALTH_GOAL;
 
-    @Column
     @JsonProperty("EDUCATION_RATE")
     private String EDUCATION_RATE;
 
-    @Column
     @JsonProperty("EDUCATION_REQUIRE")
     private String EDUCATION_REQUIRE;
 
-    @Column
     @JsonProperty("EDUCATION_GOAL")
     private String EDUCATION_GOAL;
 
-    @Column
     @JsonProperty("SOCIAL_RATE")
     private String SOCIAL_RATE;
 
-    @Column
     @JsonProperty("SOCIAL_REQUIREMENT")
     private String SOCIAL_REQUIREMENT;
 
-    @Column
     @JsonProperty("SOCIAL_GOAL")
     private String SOCIAL_GOAL;
 
-    @Column
     @JsonProperty("IS_SYNCED")
     private String IS_SYNCED;
 
