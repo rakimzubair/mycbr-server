@@ -35,11 +35,10 @@ public class Controller {
     //1. App has no data
     @GetMapping("/get-clients")
     List<Client> emptySync() {
-        //
         return clientRepository.findAll();
     }
 
-    //3. App has multiple entries
+    //2. App has entries
     @PostMapping("/clients")
     List<Client> multipleSync(@RequestBody List<Client> clients) {
         for (Client client : clients) {
@@ -63,7 +62,10 @@ public class Controller {
 }
 
 @Component
-interface ClientRepository extends JpaRepository<Client, Long> {}
+interface ClientRepository extends JpaRepository<Client, Long> {
+    @Query(value = "SELECT * FROM CLIENT_DATA WHERE ID = ?1", nativeQuery = true)
+    List<Client> findByID(String ID);
+}
 
 
 
