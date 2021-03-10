@@ -41,8 +41,16 @@ public class Controller {
     //2. App has entries
     @PostMapping("/clients")
     List<Client> multipleSync(@RequestBody List<Client> clients) {
+        int ID = 0;
+
         for (Client client : clients) {
-            clientRepository.save(new Client(client. getID(), client.getCONSENT(), client.getDATE(), client.getFIRST_NAME(),
+            ID = (int) Long.parseLong(client.getID());
+
+            if (!clientRepository.findByID(client.getID()).isEmpty()) {
+                ID += 1;
+            }
+
+            clientRepository.save(new Client(String.valueOf(ID), client.getCONSENT(), client.getDATE(), client.getFIRST_NAME(),
                     client.getLAST_NAME(), client.getAGE(), client.getGENDER(), client.getLOCATION(), client.getVILLAGE_NUMBER(),
                     client.getCONTACT(), client.getCAREGIVER_PRESENCE(), client.getCAREGIVER_NUMBER(), client.getDISABILITY(),
                     client.getHEALTH_RATE(), client.getHEALTH_REQUIREMENT(), client.getHEALTH_GOAL(), client.getEDUCATION_RATE(), client.getEDUCATION_REQUIRE(),
