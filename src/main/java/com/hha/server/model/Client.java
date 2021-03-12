@@ -11,12 +11,12 @@ public class Client {
     //Saved answers to questions
     //all open to change depending on saving to database
     @Id
-    @Column
-    @JsonProperty("ID")
+    @Column(name = "ID")
+    //@JsonProperty("ID")
     private String ID;
 
-    @Column
-    @JsonProperty("CONSENT")
+    @Column(name = "CONSENT")
+    //@JsonProperty("CONSENT")
     private String CONSENT;
 
     @Column
