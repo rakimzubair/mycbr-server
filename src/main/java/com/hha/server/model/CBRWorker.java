@@ -30,7 +30,7 @@ public class CBRWorker {
     @Id
     @Column
     @JsonProperty("ID")
-    private int ID;
+    private String ID;
 
     public CBRWorker(String FIRST_NAME, String LAST_NAME, String EMAIL, String PASSWORD) {
         this.FIRST_NAME = FIRST_NAME;
@@ -74,11 +74,11 @@ public class CBRWorker {
         this.PASSWORD = PASSWORD;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 }

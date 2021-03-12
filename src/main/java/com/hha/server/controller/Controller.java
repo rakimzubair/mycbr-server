@@ -1,6 +1,9 @@
 package com.hha.server.controller;
 
+import com.hha.server.model.CBRWorker;
 import com.hha.server.model.Client;
+import com.hha.server.model.Referral;
+import com.hha.server.model.Visit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -8,16 +11,30 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.ReferralException;
+import java.sql.Ref;
 import java.util.List;
 
 @RestController
 public class Controller {
-    //TODO: Add repositories for all objects that are created, and annotate with @Autowired.
     @Autowired
     private final ClientRepository clientRepository;
 
-    public Controller(ClientRepository clientRepository) {
+    @Autowired
+    private final WorkerRepository workerRepository;
+
+    @Autowired
+    private final VisitRepository visitRepository;
+
+    @Autowired
+    private final ReferralRepository referralRepository;
+
+
+    public Controller(ClientRepository clientRepository, WorkerRepository workerRepository, VisitRepository visitRepository, ReferralRepository referralRepository) {
         this.clientRepository = clientRepository;
+        this.workerRepository = workerRepository;
+        this.visitRepository = visitRepository;
+        this.referralRepository = referralRepository;
     }
 
     @GetMapping
@@ -29,18 +46,32 @@ public class Controller {
     long numClients() {
         return clientRepository.count();
     }
-
+    
+    @GetMapping("/count")
+    long numWorkers() {
+        return workerRepository.count();
+    }
+    
+    @GetMapping("/count")
+    long numVisits() {
+        return visitRepository.count();
+    }
+    
+    @GetMapping("/count")
+    long numReferrals() {
+        return referralRepository.count();
+    }
 
     //SYNC ENDPOINTS - CLIENT
     //1. App has no data
     @GetMapping("/get-clients")
-    List<Client> emptySync() {
+    List<Client> emptySyncClients() {
         return clientRepository.findAll();
     }
 
     //2. App has entries
     @PostMapping("/clients")
-    List<Client> multipleSync(@RequestBody List<Client> clients) {
+    List<Client> multipleSyncClients(@RequestBody List<Client> clients) {
         int ID = 0;
 
         for (Client client : clients) {
@@ -60,39 +91,66 @@ public class Controller {
         return clientRepository.findAll();
     }
 
-
-    /*-------TODO: Adding endpoints for other tables-------------
-    Just change the "Client" to whatever object you're adding.
-
+    //SYNC ENDPOINTS - WORKER
     //1. App has no data
-    @GetMapping("/get-clients")
-    List<Client> emptySync() {
-        return clientRepository.findAll();
+    @GetMapping("/get-workers")
+    List<CBRWorker> emptySyncWorkers() {
+        return workerRepository.findAll();
     }
 
     //2. App has entries
-    @PostMapping("/clients")
-    List<Client> multipleSync(@RequestBody List<Client> clients) {
-        int ID = 0;
+    @PostMapping("/workers")
+    List<CBRWorker> multipleSyncWorkers(@RequestBody List<CBRWorker> workers) {
 
-        for (Client client : clients) {
-            ID = (int) Long.parseLong(client.getID());
+        for (CBRWorker worker : workers) {
 
-            if (!clientRepository.findByID(client.getID()).isEmpty()) {
-                ID += 1;
-            }
-
-            clientRepository.save(new Client(String.valueOf(ID), client.getCONSENT(), client.getDATE(), client.getFIRST_NAME(),
-                    client.getLAST_NAME(), client.getAGE(), client.getGENDER(), client.getLOCATION(), client.getVILLAGE_NUMBER(),
-                    client.getCONTACT(), client.getCAREGIVER_PRESENCE(), client.getCAREGIVER_NUMBER(), client.getDISABILITY(),
-                    client.getHEALTH_RATE(), client.getHEALTH_REQUIREMENT(), client.getHEALTH_GOAL(), client.getEDUCATION_RATE(), client.getEDUCATION_REQUIRE(),
-                    client.getEDUCATION_GOAL(), client.getSOCIAL_RATE(), client.getSOCIAL_REQUIREMENT(), client.getSOCIAL_GOAL(), "1"));
+            workerRepository.save(new CBRWorker(worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
         }
 
-        return clientRepository.findAll();
+        return workerRepository.findAll();
     }
 
-    */
+    //SYNC ENDPOINTS - VISITS
+    //1. App has no data
+    @GetMapping("/get-visits")
+    List<Visit> emptySyncVisits() {
+        return visitRepository.findAll();
+    }
+
+    //2. App has entries
+    @PostMapping("/visits")
+    List<Visit> multipleSyncVisits(@RequestBody List<Visit> visits) {
+        for (Visit visit : visits) {
+
+            visitRepository.save(new Visit(visit.getVisit_id(), visit.getPurposeOfVisit(), visit.getIfCbr(), visit.getDate(),
+                    visit.getLocation(), visit.getVillageNumber(), visit.getHealthProvided(), visit.getHealthGoalMet(),visit.getHealthIfConcluded(),
+                    visit.getSocialProvided(), visit.getSocialGoalMet(), visit.getSocialIfConcluded(), visit.getEducationProvided(),
+                    visit.getEducationGoalMet(), visit.getEducationIfConcluded(), visit.getClient_id()));
+        }
+
+        return visitRepository.findAll();
+    }
+
+    //SYNC ENDPOINTS - REFERRALS
+    //1. App has no data
+    @GetMapping("/get-referrals")
+    List<Referral> emptySyncReferrals() {
+        return referralRepository.findAll();
+    }
+
+    //2. App has entries
+    @PostMapping("/referrals")
+    List<Referral> multipleSyncReferrals(@RequestBody List<Referral> referrals) {
+        for (Referral referral : referrals) {
+
+            referralRepository.save(new Referral(referral.getSERVICE_REQ(),referral.getREFERRAL_PHOTO(), referral.getBASIC_OR_INTER(),
+                    referral.getHIP_WIDTH(), referral.getHAS_WHEEL_CHAIR(), referral.getWHEEL_CHAIR_REPARABLE(), referral.getBRING_TO_CENTRE(),
+                    referral.getCONDITIONS(), referral.getINJURY_LOCATION_KNEE(), referral.getINJURY_LOCATION_ELBOW(), referral.getSTATUS(),
+                    referral.getOUTCOME(), referral.getCLIENT_ID()));
+        }
+
+        return referralRepository.findAll();
+    }
 
     //Exception Handlers
     @ResponseStatus(value = HttpStatus.BAD_REQUEST,
@@ -103,15 +161,26 @@ public class Controller {
     }
 }
 
-/*TODO: implement interfaces for all objects that are added.
-The code below can be reused, again just change Client to whatever object you're implementing
-*/
-
 @Component
 interface ClientRepository extends JpaRepository<Client, Long> {
     @Query(value = "SELECT * FROM CLIENT_DATA WHERE ID = ?1", nativeQuery = true)
     List<Client> findByID(String ID);
 }
 
+@Component
+interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
+    @Query(value = "SELECT * FROM WORKER_DATA WHERE ID = ?1", nativeQuery = true)
+    List<CBRWorker> findByID(String ID);
+}
 
+@Component
+interface VisitRepository extends JpaRepository<Visit, Long> {
+    @Query(value = "SELECT * FROM VISIT_DATA WHERE ID = ?1", nativeQuery = true)
+    List<Visit> findByID(String ID);
+}
 
+@Component
+interface ReferralRepository extends JpaRepository<Referral, Long> {
+    @Query(value = "SELECT * FROM REFERRAL_DATA WHERE CLIENT_ID = ?1", nativeQuery = true)
+    List<Referral> findByID(String ID);
+}

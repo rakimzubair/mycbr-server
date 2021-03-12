@@ -69,13 +69,13 @@ public class Referral {
     @Id
     @Column
     @JsonProperty("CLIENT_ID")
-    private Long CLIENT_ID;
+    private String CLIENT_ID;
 
     public Referral() {
 
     }
 
-    public Referral(String SERVICE_REQ, byte[] REFERRAL_PHOTO, String BASIC_OR_INTER, double HIP_WIDTH, Boolean HAS_WHEEL_CHAIR, Boolean WHEEL_CHAIR_REPARABLE, Boolean BRING_TO_CENTRE, ArrayList<String> CONDITIONS, String INJURY_LOCATION_KNEE, String INJURY_LOCATION_ELBOW, String STATUS, String OUTCOME, Long CLIENT_ID) {
+    public Referral(String SERVICE_REQ, byte[] REFERRAL_PHOTO, String BASIC_OR_INTER, double HIP_WIDTH, Boolean HAS_WHEEL_CHAIR, Boolean WHEEL_CHAIR_REPARABLE, Boolean BRING_TO_CENTRE, ArrayList<String> CONDITIONS, String INJURY_LOCATION_KNEE, String INJURY_LOCATION_ELBOW, String STATUS, String OUTCOME, String CLIENT_ID) {
         this.SERVICE_REQ = SERVICE_REQ;
         this.REFERRAL_PHOTO = REFERRAL_PHOTO;
         this.BASIC_OR_INTER = BASIC_OR_INTER;
@@ -187,11 +187,11 @@ public class Referral {
         this.OUTCOME = OUTCOME;
     }
 
-    public Long getCLIENT_ID() {
+    public String getCLIENT_ID() {
         return CLIENT_ID;
     }
 
-    public void setCLIENT_ID(Long CLIENT_ID) {
+    public void setCLIENT_ID(String CLIENT_ID) {
         this.CLIENT_ID = CLIENT_ID;
     }
 }

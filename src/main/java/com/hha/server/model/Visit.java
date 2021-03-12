@@ -16,7 +16,7 @@ public class Visit {
     @Id
     @Column
     @JsonProperty("ID")
-    private long visit_id;
+    private String visit_id;
 
     @Column
     @JsonProperty("VISIT_DATE")
@@ -76,12 +76,12 @@ public class Visit {
 
     @Column
     @JsonProperty("CLIENT_ID")
-    private long client_id;
+    private String client_id;
 
     public Visit() {
     }
 
-    public Visit(long visit_id, String purposeOfVisit, String ifCbr, String date, String location, int villageNumber, String healthProvided, String healthGoalMet, String healthIfConcluded, String socialProvided, String socialGoalMet, String socialIfConcluded, String educationProvided, String educationGoalMet, String educationIfConcluded, long client_id) {
+    public Visit(String visit_id, String purposeOfVisit, String ifCbr, String date, String location, int villageNumber, String healthProvided, String healthGoalMet, String healthIfConcluded, String socialProvided, String socialGoalMet, String socialIfConcluded, String educationProvided, String educationGoalMet, String educationIfConcluded, String client_id) {
         this.visit_id = visit_id;
         this.purposeOfVisit = purposeOfVisit;
         this.ifCbr = ifCbr;
@@ -100,11 +100,11 @@ public class Visit {
         this.client_id = client_id;
     }
 
-    public long getVisit_id() {
+    public String getVisit_id() {
         return visit_id;
     }
 
-    public void setVisit_id(long visit_id) {
+    public void setVisit_id(String visit_id) {
         this.visit_id = visit_id;
     }
 
@@ -220,11 +220,11 @@ public class Visit {
         this.educationIfConcluded = educationIfConcluded;
     }
 
-    public long getClient_id() {
+    public String getClient_id() {
         return client_id;
     }
 
-    public void setClient_id(long client_id) {
+    public void setClient_id(String client_id) {
         this.client_id = client_id;
     }
 }
