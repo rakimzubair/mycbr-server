@@ -12,11 +12,11 @@ public class Client {
     //all open to change depending on saving to database
     @Id
     @Column(name = "ID")
-    //@JsonProperty("ID")
+    @JsonProperty("ID")
     private String ID;
 
     @Column(name = "CONSENT")
-    //@JsonProperty("CONSENT")
+    @JsonProperty("CONSENT")
     private String CONSENT;
 
     @Column
