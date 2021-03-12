@@ -43,8 +43,6 @@ public class Controller {
     List<Client> multipleSync(@RequestBody List<Client> clients) {
         int ID = 0;
 
-        List<Client> dataToReturn = clientRepository.findAll(); //getting server data that the app doesn't have
-
         for (Client client : clients) {
             ID = (int) Long.parseLong(client.getID());
 
@@ -59,7 +57,7 @@ public class Controller {
                     client.getEDUCATION_GOAL(), client.getSOCIAL_RATE(), client.getSOCIAL_REQUIREMENT(), client.getSOCIAL_GOAL(), "1"));
         }
 
-        return dataToReturn;
+        return clientRepository.findAll();
     }
 
     //Exception Handlers
