@@ -3,19 +3,16 @@ package com.hha.server.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @Entity
 @Table(name = "CLIENT_DATA")
 public class Client {
-    //Saved answers to questions
-    //all open to change depending on saving to database
     @Id
-    @Column(name = "ID")
+    @Column
     @JsonProperty("ID")
     private String ID;
 
-    @Column(name = "CONSENT")
+    @Column
     @JsonProperty("CONSENT")
     private String CONSENT;
 
