@@ -3,6 +3,7 @@ package com.hha.server.controller;
 import com.hha.server.model.CBRWorker;
 import com.hha.server.model.Client;
 
+import javafx.concurrent.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -98,9 +99,16 @@ public class Controller {
     //2. App has entries
     @PostMapping("/workers")
     List<CBRWorker> multipleSyncWorkers(@RequestBody List<CBRWorker> workers) {
+        int ID = 0;
 
         for (CBRWorker worker : workers) {
-            workerRepository.save(new CBRWorker(worker.getID(), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
+            ID = (int) Long.parseLong((worker.getID()));
+
+            if (!workerRepository.findByID(worker.getID()).isEmpty()) {
+                ID += 1;
+            }
+
+            workerRepository.save(new CBRWorker(String.valueOf(ID), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
         }
 
         return workerRepository.findAll();
@@ -165,6 +173,8 @@ interface ClientRepository extends JpaRepository<Client, Long> {
 
 @Component
 interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
+    @Query(value = "SELECT * FROM WORKER WHERE ID = ?1", nativeQuery = true)
+    List<Client> findByID(String ID);
 
 }
 
