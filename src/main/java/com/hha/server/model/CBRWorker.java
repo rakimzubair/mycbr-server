@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "WORKER_DATA")
 public class CBRWorker {
+    @Id
+    @Column
+    @JsonProperty("ID")
+    private String ID;
 
     @Column
     @JsonProperty("FIRST_NAME")
@@ -22,11 +26,6 @@ public class CBRWorker {
     @Column
     @JsonProperty("PASSWORD")
     private String PASSWORD;
-
-    @Id
-    @Column
-    @JsonProperty("ID")
-    private String ID;
 
     public CBRWorker(String FIRST_NAME, String LAST_NAME, String EMAIL, String PASSWORD) {
         this.FIRST_NAME = FIRST_NAME;

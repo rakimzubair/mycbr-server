@@ -2,8 +2,7 @@ package com.hha.server.controller;
 
 import com.hha.server.model.CBRWorker;
 import com.hha.server.model.Client;
-import com.hha.server.model.Referral;
-import com.hha.server.model.Visit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.ReferralException;
-import java.sql.Ref;
 import java.util.List;
 
 @RestController
@@ -23,18 +20,18 @@ public class Controller {
     @Autowired
     private final WorkerRepository workerRepository;
 
-    @Autowired
+    /*@Autowired
     private final VisitRepository visitRepository;
 
     @Autowired
-    private final ReferralRepository referralRepository;
+    private final ReferralRepository referralRepository;*/
 
 
-    public Controller(ClientRepository clientRepository, WorkerRepository workerRepository, VisitRepository visitRepository, ReferralRepository referralRepository) {
+    public Controller(ClientRepository clientRepository, WorkerRepository workerRepository) {
         this.clientRepository = clientRepository;
         this.workerRepository = workerRepository;
-        this.visitRepository = visitRepository;
-        this.referralRepository = referralRepository;
+        /*this.visitRepository = visitRepository;
+        this.referralRepository = referralRepository;*/
     }
 
     @GetMapping
@@ -52,7 +49,7 @@ public class Controller {
         return workerRepository.count();
     }
     
-    @GetMapping("/count")
+    /*@GetMapping("/count")
     long numVisits() {
         return visitRepository.count();
     }
@@ -60,7 +57,7 @@ public class Controller {
     @GetMapping("/count")
     long numReferrals() {
         return referralRepository.count();
-    }
+    }*/
 
     //SYNC ENDPOINTS - CLIENT
     //1. App has no data
@@ -103,14 +100,13 @@ public class Controller {
     List<CBRWorker> multipleSyncWorkers(@RequestBody List<CBRWorker> workers) {
 
         for (CBRWorker worker : workers) {
-
             workerRepository.save(new CBRWorker(worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
         }
 
         return workerRepository.findAll();
     }
 
-    //SYNC ENDPOINTS - VISITS
+    /*(SYNC ENDPOINTS - VISITS
     //1. App has no data
     @GetMapping("/get-visits")
     List<Visit> emptySyncVisits() {
@@ -150,7 +146,7 @@ public class Controller {
         }
 
         return referralRepository.findAll();
-    }
+    }*/
 
     //Exception Handlers
     @ResponseStatus(value = HttpStatus.BAD_REQUEST,
@@ -172,11 +168,11 @@ interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
 
 }
 
-@Component
+/*@Component
 interface VisitRepository extends JpaRepository<Visit, Long> {
 }
 
 @Component
 interface ReferralRepository extends JpaRepository<Referral, Long> {
 
-}
+}*/
