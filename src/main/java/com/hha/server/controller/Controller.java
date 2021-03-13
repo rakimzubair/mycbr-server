@@ -102,7 +102,7 @@ public class Controller {
 
         for (CBRWorker worker : workers) {
             //If worker email already exists in database, return error code 409
-            if(!workerRepository.findByID(worker.getID()).isEmpty()) {
+            if(!workerRepository.findByEmail(worker.getEMAIL()).isEmpty()) {
                 throw new IllegalArgumentException();
             }
 
