@@ -172,7 +172,7 @@ interface ClientRepository extends JpaRepository<Client, Long> {
 @Component
 interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
     @Query(value = "SELECT * FROM WORKER_DATA WHERE ID = ?1", nativeQuery = true)
-    List<Client> findByID(String ID);
+    List<CBRWorker> findByID(String ID);
 }
 
 /*@Component
