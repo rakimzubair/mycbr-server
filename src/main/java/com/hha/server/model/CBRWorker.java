@@ -27,7 +27,8 @@ public class CBRWorker {
     @JsonProperty("PASSWORD")
     private String PASSWORD;
 
-    public CBRWorker(String FIRST_NAME, String LAST_NAME, String EMAIL, String PASSWORD) {
+    public CBRWorker(String ID, String FIRST_NAME, String LAST_NAME, String EMAIL, String PASSWORD) {
+        this.ID = ID;
         this.FIRST_NAME = FIRST_NAME;
         this.LAST_NAME = LAST_NAME;
         this.EMAIL = EMAIL;
