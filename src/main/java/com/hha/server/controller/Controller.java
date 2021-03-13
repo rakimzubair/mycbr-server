@@ -107,7 +107,7 @@ public class Controller {
                 ID += 1;
             }
 
-            workerRepository.save(new CBRWorker(worker.getID(), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
+            workerRepository.save(new CBRWorker(String.valueOf(ID), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
         }
 
         return workerRepository.findAll();
