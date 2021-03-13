@@ -98,16 +98,9 @@ public class Controller {
     //2. App has entries
     @PostMapping("/workers")
     List<CBRWorker> multipleSyncWorkers(@RequestBody List<CBRWorker> workers) {
-        int ID = 0;
 
         for (CBRWorker worker : workers) {
-            ID = (int) Long.parseLong((worker.getID()));
-
-            if (!workerRepository.findByID(worker.getID()).isEmpty()) {
-                ID += 1;
-            }
-
-            workerRepository.save(new CBRWorker(String.valueOf(ID), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
+            workerRepository.save(new CBRWorker(worker.getID(), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
         }
 
         return workerRepository.findAll();
@@ -124,7 +117,6 @@ public class Controller {
     @PostMapping("/visits")
     List<Visit> multipleSyncVisits(@RequestBody List<Visit> visits) {
         for (Visit visit : visits) {
-
             visitRepository.save(new Visit(visit.getVisit_id(), visit.getPurposeOfVisit(), visit.getIfCbr(), visit.getDate(),
                     visit.getLocation(), visit.getVillageNumber(), visit.getHealthProvided(), visit.getHealthGoalMet(),visit.getHealthIfConcluded(),
                     visit.getSocialProvided(), visit.getSocialGoalMet(), visit.getSocialIfConcluded(), visit.getEducationProvided(),
@@ -172,9 +164,8 @@ interface ClientRepository extends JpaRepository<Client, Long> {
 
 @Component
 interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
-    @Query(value = "SELECT * FROM WORKER WHERE ID = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM WORKER_DATA WHERE ID = ?1", nativeQuery = true)
     List<Client> findByID(String ID);
-
 }
 
 /*@Component
