@@ -5,63 +5,50 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 
 public class Referral {
-
-    @Id
     @Column
     @JsonProperty("SERVICE_REQ")
     private String SERVICE_REQ;
 
-    @Id
     @Column
     @JsonProperty("REFERRAL_PHOTO")
     private byte[] REFERRAL_PHOTO;
 
-    @Id
     @Column
     @JsonProperty("BASIC_OR_INTER")
     private String BASIC_OR_INTER;
 
-    @Id
     @Column
     @JsonProperty("HIP_WIDTH")
     private double HIP_WIDTH;
 
-    @Id
     @Column
     @JsonProperty("HAS_WHEEL_CHAIR")
     private Boolean HAS_WHEEL_CHAIR;
 
-    @Id
     @Column
     @JsonProperty("WHEEL_CHAIR_REPARABLE")
     private Boolean WHEEL_CHAIR_REPARABLE;
 
-    @Id
     @Column
     @JsonProperty("BRING_TO_CENTRE")
     private Boolean BRING_TO_CENTRE;
 
-    @Id
     @Column
     @JsonProperty("CONDITIONS")
     private ArrayList<String> CONDITIONS = new ArrayList<>();
 
-    @Id
     @Column
     @JsonProperty("INJURY_LOCATION_KNEE")
     private String INJURY_LOCATION_KNEE;
 
-    @Id
     @Column
     @JsonProperty("INJURY_LOCATION_ELBOW")
     private String INJURY_LOCATION_ELBOW;
 
-    @Id
     @Column
     @JsonProperty("STATUS")
     private String STATUS;
 
-    @Id
     @Column
     @JsonProperty("OUTCOME")
     private String OUTCOME;

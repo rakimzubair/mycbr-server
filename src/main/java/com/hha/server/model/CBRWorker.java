@@ -7,22 +7,18 @@ import javax.persistence.*;
 @Table(name = "WORKER_DATA")
 public class CBRWorker {
 
-    @Id
     @Column
     @JsonProperty("FIRST_NAME")
     private String FIRST_NAME;
 
-    @Id
     @Column
     @JsonProperty("LAST_NAME")
     private String LAST_NAME;
 
-    @Id
     @Column
     @JsonProperty("EMAIL")
     private String EMAIL;
 
-    @Id
     @Column
     @JsonProperty("PASSWORD")
     private String PASSWORD;

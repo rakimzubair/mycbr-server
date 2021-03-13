@@ -169,18 +169,14 @@ interface ClientRepository extends JpaRepository<Client, Long> {
 
 @Component
 interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
-    @Query(value = "SELECT * FROM WORKER_DATA WHERE ID = ?1", nativeQuery = true)
-    List<CBRWorker> findByID(String ID);
+
 }
 
 @Component
 interface VisitRepository extends JpaRepository<Visit, Long> {
-    @Query(value = "SELECT * FROM VISIT_DATA WHERE ID = ?1", nativeQuery = true)
-    List<Visit> findByID(String ID);
 }
 
 @Component
 interface ReferralRepository extends JpaRepository<Referral, Long> {
-    @Query(value = "SELECT * FROM REFERRAL_DATA WHERE CLIENT_ID = ?1", nativeQuery = true)
-    List<Referral> findByID(String ID);
+
 }
