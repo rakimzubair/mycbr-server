@@ -101,13 +101,19 @@ public class Controller {
         int ID = 0;
 
         for (CBRWorker worker : workers) {
-            ID = (int) Long.parseLong(worker.getID());
-
-            if (!workerRepository.findByID(worker.getID()).isEmpty()) {
-                ID += 1;
+            //If worker email already exists in database, return error code 409
+            if(!workerRepository.findByID(worker.getID()).isEmpty()) {
+                throw new IllegalArgumentException();
             }
 
-            workerRepository.save(new CBRWorker(String.valueOf(ID), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
+            else {
+                ID = (int) Long.parseLong(worker.getID());
+                if (!workerRepository.findByID(worker.getID()).isEmpty()) {
+                    ID += 1;
+                }
+
+                workerRepository.save(new CBRWorker(String.valueOf(ID), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
+            }
         }
 
         return workerRepository.findAll();
@@ -155,10 +161,10 @@ public class Controller {
     }*/
 
     //Exception Handlers
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST,
-            reason = "Request ID not found.")
+    @ResponseStatus(value = HttpStatus.CONFLICT,
+            reason = "Email is already in use.")
     @ExceptionHandler(IllegalArgumentException.class)
-    public void badIdExceptionHandler() {
+    public void alreadyExistsExceptionHandler() {
 
     }
 }
@@ -173,6 +179,9 @@ interface ClientRepository extends JpaRepository<Client, Long> {
 interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
     @Query(value = "SELECT * FROM WORKER_DATA WHERE ID = ?1", nativeQuery = true)
     List<CBRWorker> findByID(String ID);
+
+    @Query(value = "SELECT * FROM WORKER_DATA WHERE EMAIL = ?1", nativeQuery = true)
+    List<CBRWorker> findByEmail(String email);
 }
 
 /*@Component
