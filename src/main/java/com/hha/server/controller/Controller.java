@@ -39,12 +39,12 @@ public class Controller {
         return "Welcome to myCBR Server!";
     }
 
-    @GetMapping("/count")
+    @GetMapping("/count-clients")
     long numClients() {
         return clientRepository.count();
     }
     
-    @GetMapping("/count")
+    @GetMapping("/count-workers")
     long numWorkers() {
         return workerRepository.count();
     }
