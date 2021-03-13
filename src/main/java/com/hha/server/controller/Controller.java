@@ -3,7 +3,6 @@ package com.hha.server.controller;
 import com.hha.server.model.CBRWorker;
 import com.hha.server.model.Client;
 
-import javafx.concurrent.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
