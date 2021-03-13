@@ -98,8 +98,15 @@ public class Controller {
     //2. App has entries
     @PostMapping("/workers")
     List<CBRWorker> multipleSyncWorkers(@RequestBody List<CBRWorker> workers) {
+        int ID = 0;
 
         for (CBRWorker worker : workers) {
+            ID = (int) Long.parseLong(worker.getID());
+
+            if (!workerRepository.findByID(worker.getID()).isEmpty()) {
+                ID += 1;
+            }
+
             workerRepository.save(new CBRWorker(worker.getID(), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
         }
 
