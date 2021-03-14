@@ -97,6 +97,14 @@ public class Client {
     private String SOCIAL_GOAL;
 
     @Column
+    @JsonProperty("LATITUDE")
+    private String LATITUDE;
+
+    @Column
+    @JsonProperty("LONGITUDE")
+    private String LONGITUDE;
+
+    @Column
     @JsonProperty("IS_SYNCED")
     private String IS_SYNCED;
 

@@ -106,7 +106,7 @@ public class Controller {
 
             else {
                 ID = (int) Long.parseLong(worker.getID());
-                if (!workerRepository.findByID(worker.getID()).isEmpty()) {
+                while (!workerRepository.findByID(String.valueOf(ID)).isEmpty()) {
                     ID += 1;
                 }
 
