@@ -64,11 +64,15 @@ public class Referral {
     @JsonProperty("CLIENT_ID")
     private String CLIENT_ID;
 
+    @Column
+    @JsonProperty("IS_SYNCED")
+    private String isSynced;
+
     public Referral() {
 
     }
 
-    public Referral(String SERVICE_REQ, byte[] REFERRAL_PHOTO, String BASIC_OR_INTER, double HIP_WIDTH, Boolean HAS_WHEEL_CHAIR, Boolean WHEEL_CHAIR_REPARABLE, Boolean BRING_TO_CENTRE, ArrayList<String> CONDITIONS, String INJURY_LOCATION_KNEE, String INJURY_LOCATION_ELBOW, String STATUS, String OUTCOME, String CLIENT_ID) {
+    public Referral(String SERVICE_REQ, byte[] REFERRAL_PHOTO, String BASIC_OR_INTER, double HIP_WIDTH, Boolean HAS_WHEEL_CHAIR, Boolean WHEEL_CHAIR_REPARABLE, Boolean BRING_TO_CENTRE, ArrayList<String> CONDITIONS, String INJURY_LOCATION_KNEE, String INJURY_LOCATION_ELBOW, String STATUS, String OUTCOME, String CLIENT_ID, String isSynced) {
         this.SERVICE_REQ = SERVICE_REQ;
         this.REFERRAL_PHOTO = REFERRAL_PHOTO;
         this.BASIC_OR_INTER = BASIC_OR_INTER;
@@ -82,6 +86,7 @@ public class Referral {
         this.STATUS = STATUS;
         this.OUTCOME = OUTCOME;
         this.CLIENT_ID = CLIENT_ID;
+        this.isSynced = isSynced;
     }
 
     public String getSERVICE_REQ() {
