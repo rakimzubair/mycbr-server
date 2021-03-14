@@ -102,7 +102,7 @@ public class Controller {
 
         for (CBRWorker worker : workers) {
             //If worker email already exists in database, return error code 409
-            if(!workerRepository.findByEmail(worker.getEMAIL()).isEmpty()) {
+            if(!workerRepository.findByUsername(worker.getUSERNAME()).isEmpty()) {
                 throw new IllegalArgumentException();
             }
 
@@ -112,7 +112,7 @@ public class Controller {
                     ID += 1;
                 }
 
-                workerRepository.save(new CBRWorker(String.valueOf(ID), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getEMAIL(), worker.getPASSWORD()));
+                workerRepository.save(new CBRWorker(String.valueOf(ID), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getUSERNAME(), worker.getPASSWORD()));
             }
         }
 
@@ -180,8 +180,8 @@ interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
     @Query(value = "SELECT * FROM WORKER_DATA WHERE ID = ?1", nativeQuery = true)
     List<CBRWorker> findByID(String ID);
 
-    @Query(value = "SELECT * FROM WORKER_DATA WHERE EMAIL = ?1", nativeQuery = true)
-    List<CBRWorker> findByEmail(String email);
+    @Query(value = "SELECT * FROM WORKER_DATA WHERE USERNAME = ?1", nativeQuery = true)
+    List<CBRWorker> findByUsername(String username);
 }
 
 /*@Component
