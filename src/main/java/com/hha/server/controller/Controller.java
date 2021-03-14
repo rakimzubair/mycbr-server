@@ -3,6 +3,7 @@ package com.hha.server.controller;
 import com.hha.server.model.CBRWorker;
 import com.hha.server.model.Client;
 
+import com.hha.server.model.Visit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,18 +21,18 @@ public class Controller {
     @Autowired
     private final WorkerRepository workerRepository;
 
-    /*@Autowired
+    @Autowired
     private final VisitRepository visitRepository;
 
-    @Autowired
+    /*@Autowired
     private final ReferralRepository referralRepository;*/
 
 
-    public Controller(ClientRepository clientRepository, WorkerRepository workerRepository) {
+    public Controller(ClientRepository clientRepository, WorkerRepository workerRepository, VisitRepository visitRepository) {
         this.clientRepository = clientRepository;
         this.workerRepository = workerRepository;
-        /*this.visitRepository = visitRepository;
-        this.referralRepository = referralRepository;*/
+        this.visitRepository = visitRepository;
+        //this.referralRepository = referralRepository;
     }
 
     @GetMapping
@@ -119,7 +120,7 @@ public class Controller {
         return workerRepository.findAll();
     }
 
-    /*(SYNC ENDPOINTS - VISITS
+    ///SYNC ENDPOINTS - VISITS
     //1. App has no data
     @GetMapping("/get-visits")
     List<Visit> emptySyncVisits() {
@@ -139,7 +140,7 @@ public class Controller {
         return visitRepository.findAll();
     }
 
-    //SYNC ENDPOINTS - REFERRALS
+    /*SYNC ENDPOINTS - REFERRALS
     //1. App has no data
     @GetMapping("/get-referrals")
     List<Referral> emptySyncReferrals() {
@@ -184,11 +185,11 @@ interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
     List<CBRWorker> findByUsername(String username);
 }
 
-/*@Component
+@Component
 interface VisitRepository extends JpaRepository<Visit, Long> {
 }
 
-@Component
+/*@Component
 interface ReferralRepository extends JpaRepository<Referral, Long> {
 
 }*/
