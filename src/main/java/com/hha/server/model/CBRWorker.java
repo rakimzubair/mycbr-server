@@ -15,8 +15,8 @@ public class CBRWorker {
     private String LAST_NAME;
 
     @Column
-    @JsonProperty("EMAIL")
-    private String EMAIL;
+    @JsonProperty("USERNAME")
+    private String USERNAME;
 
     @Column
     @JsonProperty("PASSWORD")
@@ -27,11 +27,11 @@ public class CBRWorker {
     @JsonProperty("ID")
     private String ID;
 
-    public CBRWorker(String ID, String FIRST_NAME, String LAST_NAME, String EMAIL, String PASSWORD) {
+    public CBRWorker(String ID, String FIRST_NAME, String LAST_NAME, String USERNAME, String PASSWORD) {
         this.ID = ID;
         this.FIRST_NAME = FIRST_NAME;
         this.LAST_NAME = LAST_NAME;
-        this.EMAIL = EMAIL;
+        this.USERNAME = USERNAME;
         this.PASSWORD = PASSWORD;
     }
 
@@ -54,12 +54,12 @@ public class CBRWorker {
         this.LAST_NAME = LAST_NAME;
     }
 
-    public String getEMAIL() {
-        return EMAIL;
+    public String getUSERNAME() {
+        return USERNAME;
     }
 
-    public void setEMAIL(String EMAIL) {
-        this.EMAIL = EMAIL;
+    public void setUSERNAME(String USERNAME) {
+        this.USERNAME = USERNAME;
     }
 
     public String getPASSWORD() {
