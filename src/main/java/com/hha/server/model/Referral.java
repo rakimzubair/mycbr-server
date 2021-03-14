@@ -5,6 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 
 public class Referral {
+    @Id
+    @Column
+    @JsonProperty("ID")
+    private Long ID;
+
     @Column
     @JsonProperty("SERVICE_REQ")
     private String SERVICE_REQ;
@@ -53,7 +58,6 @@ public class Referral {
     @JsonProperty("OUTCOME")
     private String OUTCOME;
 
-    @Id
     @Column
     @JsonProperty("CLIENT_ID")
     private String CLIENT_ID;

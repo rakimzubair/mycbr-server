@@ -3,6 +3,7 @@ package com.hha.server.controller;
 import com.hha.server.model.CBRWorker;
 import com.hha.server.model.Client;
 
+import com.hha.server.model.Referral;
 import com.hha.server.model.Visit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,15 +25,15 @@ public class Controller {
     @Autowired
     private final VisitRepository visitRepository;
 
-    /*@Autowired
-    private final ReferralRepository referralRepository;*/
+    @Autowired
+    private final ReferralRepository referralRepository;
 
 
-    public Controller(ClientRepository clientRepository, WorkerRepository workerRepository, VisitRepository visitRepository) {
+    public Controller(ClientRepository clientRepository, WorkerRepository workerRepository, VisitRepository visitRepository, ReferralRepository referralRepository) {
         this.clientRepository = clientRepository;
         this.workerRepository = workerRepository;
         this.visitRepository = visitRepository;
-        //this.referralRepository = referralRepository;
+        this.referralRepository = referralRepository;
     }
 
     @GetMapping
@@ -51,14 +52,10 @@ public class Controller {
     }
     
     @GetMapping("/count-visits")
-    long numVisits() {
-        return visitRepository.count();
-    }
+    long numVisits() { return visitRepository.count(); }
     
-    /*@GetMapping("/count")
-    long numReferrals() {
-        return referralRepository.count();
-    }*/
+    @GetMapping("/count-referrals")
+    long numReferrals() { return referralRepository.count(); }
 
     //SYNC ENDPOINTS - CLIENT
     //1. App has no data
@@ -140,7 +137,7 @@ public class Controller {
         return visitRepository.findAll();
     }
 
-    /*SYNC ENDPOINTS - REFERRALS
+    //SYNC ENDPOINTS - REFERRALS
     //1. App has no data
     @GetMapping("/get-referrals")
     List<Referral> emptySyncReferrals() {
@@ -159,7 +156,7 @@ public class Controller {
         }
 
         return referralRepository.findAll();
-    }*/
+    }
 
     //Exception Handlers
     @ResponseStatus(value = HttpStatus.CONFLICT,
@@ -187,11 +184,11 @@ interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
 
 @Component
 interface VisitRepository extends JpaRepository<Visit, Long> {
-    @Query(value = "SELECT * FROM WORKER_DATA WHERE ID = ?1", nativeQuery = true)
-    List<CBRWorker> findByID(String ID);
+    @Query(value = "SELECT * FROM CLIENT_VISITS WHERE ID = ?1", nativeQuery = true)
+    List<Visit> findByID(String ID);
 }
 
-/*@Component
+@Component
 interface ReferralRepository extends JpaRepository<Referral, Long> {
-
-}*/
+    //TODO: Add ID field for referrals, and search by ID
+}
