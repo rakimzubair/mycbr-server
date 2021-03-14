@@ -50,12 +50,12 @@ public class Controller {
         return workerRepository.count();
     }
     
-    /*@GetMapping("/count")
+    @GetMapping("/count-visits")
     long numVisits() {
         return visitRepository.count();
     }
     
-    @GetMapping("/count")
+    /*@GetMapping("/count")
     long numReferrals() {
         return referralRepository.count();
     }*/
@@ -187,6 +187,8 @@ interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
 
 @Component
 interface VisitRepository extends JpaRepository<Visit, Long> {
+    @Query(value = "SELECT * FROM WORKER_DATA WHERE ID = ?1", nativeQuery = true)
+    List<CBRWorker> findByID(String ID);
 }
 
 /*@Component
