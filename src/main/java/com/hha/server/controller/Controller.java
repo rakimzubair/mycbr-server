@@ -131,7 +131,7 @@ public class Controller {
             visitRepository.save(new Visit(visit.getVisit_id(), visit.getPurposeOfVisit(), visit.getIfCbr(), visit.getDate(),
                     visit.getLocation(), visit.getVillageNumber(), visit.getHealthProvided(), visit.getHealthGoalMet(),visit.getHealthIfConcluded(),
                     visit.getSocialProvided(), visit.getSocialGoalMet(), visit.getSocialIfConcluded(), visit.getEducationProvided(),
-                    visit.getEducationGoalMet(), visit.getEducationIfConcluded(), visit.getClient_id()));
+                    visit.getEducationGoalMet(), visit.getEducationIfConcluded(), visit.getClient_id(), "1"));
         }
 
         return visitRepository.findAll();

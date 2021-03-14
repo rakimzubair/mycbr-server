@@ -71,10 +71,14 @@ public class Visit {
     @JsonProperty("CLIENT_ID")
     private String client_id;
 
+    @Column
+    @JsonProperty("IS_SYNCED")
+    private String isSynced;
+
     public Visit() {
     }
 
-    public Visit(String visit_id, String purposeOfVisit, String ifCbr, String date, String location, int villageNumber, String healthProvided, String healthGoalMet, String healthIfConcluded, String socialProvided, String socialGoalMet, String socialIfConcluded, String educationProvided, String educationGoalMet, String educationIfConcluded, String client_id) {
+    public Visit(String visit_id, String purposeOfVisit, String ifCbr, String date, String location, int villageNumber, String healthProvided, String healthGoalMet, String healthIfConcluded, String socialProvided, String socialGoalMet, String socialIfConcluded, String educationProvided, String educationGoalMet, String educationIfConcluded, String client_id, String isSynced) {
         this.visit_id = visit_id;
         this.purposeOfVisit = purposeOfVisit;
         this.ifCbr = ifCbr;
@@ -91,6 +95,7 @@ public class Visit {
         this.educationGoalMet = educationGoalMet;
         this.educationIfConcluded = educationIfConcluded;
         this.client_id = client_id;
+        this.isSynced = isSynced;
     }
 
     public String getVisit_id() {
@@ -219,5 +224,13 @@ public class Visit {
 
     public void setClient_id(String client_id) {
         this.client_id = client_id;
+    }
+
+    public String getIsSynced() {
+        return isSynced;
+    }
+
+    public void setIsSynced(String isSynced) {
+        this.isSynced = isSynced;
     }
 }
