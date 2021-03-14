@@ -152,7 +152,7 @@ public class Controller {
             referralRepository.save(new Referral(referral.getSERVICE_REQ(),referral.getREFERRAL_PHOTO(), referral.getBASIC_OR_INTER(),
                     referral.getHIP_WIDTH(), referral.getHAS_WHEEL_CHAIR(), referral.getWHEEL_CHAIR_REPARABLE(), referral.getBRING_TO_CENTRE(),
                     referral.getCONDITIONS(), referral.getINJURY_LOCATION_KNEE(), referral.getINJURY_LOCATION_ELBOW(), referral.getSTATUS(),
-                    referral.getOUTCOME(), referral.getCLIENT_ID()));
+                    referral.getOUTCOME(), referral.getCLIENT_ID(), "1"));
         }
 
         return referralRepository.findAll();
