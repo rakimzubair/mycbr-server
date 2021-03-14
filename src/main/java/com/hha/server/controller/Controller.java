@@ -66,7 +66,7 @@ public class Controller {
     //2. App has entries
     @PostMapping("/clients")
     List<Client> multipleSyncClients(@RequestBody List<Client> clients) {
-        int ID = 1;
+        int ID = 0;
 
         for (Client client : clients) {
             ID = (int) Long.parseLong(client.getID());
