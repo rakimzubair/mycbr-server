@@ -105,13 +105,17 @@ public class Client {
     private String LONGITUDE;
 
     @Column
+    @JsonProperty("WORKER_ID")
+    private String WORKER_ID;
+
+    @Column
     @JsonProperty("IS_SYNCED")
     private String IS_SYNCED;
 
 
     public Client() {}
 
-    public Client(String ID, String CONSENT, String DATE, String FIRST_NAME, String LAST_NAME, String AGE, String GENDER, String LOCATION, String VILLAGE_NUMBER, String CONTACT, String CAREGIVER_PRESENCE, String CAREGIVER_NUMBER, String DISABILITY, String HEALTH_RATE, String HEALTH_REQUIREMENT, String HEALTH_GOAL, String EDUCATION_RATE, String EDUCATION_REQUIRE, String EDUCATION_GOAL, String SOCIAL_RATE, String SOCIAL_REQUIREMENT, String SOCIAL_GOAL, String LATITUDE, String LONGITUDE, String IS_SYNCED) {
+    public Client(String ID, String CONSENT, String DATE, String FIRST_NAME, String LAST_NAME, String AGE, String GENDER, String LOCATION, String VILLAGE_NUMBER, String CONTACT, String CAREGIVER_PRESENCE, String CAREGIVER_NUMBER, String DISABILITY, String HEALTH_RATE, String HEALTH_REQUIREMENT, String HEALTH_GOAL, String EDUCATION_RATE, String EDUCATION_REQUIRE, String EDUCATION_GOAL, String SOCIAL_RATE, String SOCIAL_REQUIREMENT, String SOCIAL_GOAL, String LATITUDE, String LONGITUDE, String WORKER_ID, String IS_SYNCED) {
         this.ID = ID;
         this.CONSENT = CONSENT;
         this.DATE = DATE;
@@ -136,6 +140,7 @@ public class Client {
         this.SOCIAL_GOAL = SOCIAL_GOAL;
         this.LATITUDE = LATITUDE;
         this.LONGITUDE = LONGITUDE;
+        this.WORKER_ID = WORKER_ID;
         this.IS_SYNCED = IS_SYNCED;
     }
 
@@ -329,6 +334,14 @@ public class Client {
 
     public void setLONGITUDE(String LONGITUDE) {
         this.LONGITUDE = LONGITUDE;
+    }
+
+    public String getWORKER_ID() {
+        return WORKER_ID;
+    }
+
+    public void setWORKER_ID(String WORKER_ID) {
+        this.WORKER_ID = WORKER_ID;
     }
 
     public String getIS_SYNCED() {
