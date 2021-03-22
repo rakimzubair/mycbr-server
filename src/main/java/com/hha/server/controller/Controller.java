@@ -1,10 +1,7 @@
 package com.hha.server.controller;
 
-import com.hha.server.model.CBRWorker;
-import com.hha.server.model.Client;
+import com.hha.server.model.*;
 
-import com.hha.server.model.Referral;
-import com.hha.server.model.Visit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -28,12 +25,15 @@ public class Controller {
     @Autowired
     private final ReferralRepository referralRepository;
 
+    @Autowired
+    private final MessageRepository messageRepository;
 
-    public Controller(ClientRepository clientRepository, WorkerRepository workerRepository, VisitRepository visitRepository, ReferralRepository referralRepository) {
+    public Controller(ClientRepository clientRepository, WorkerRepository workerRepository, VisitRepository visitRepository, ReferralRepository referralRepository, MessageRepository messageRepository) {
         this.clientRepository = clientRepository;
         this.workerRepository = workerRepository;
         this.visitRepository = visitRepository;
         this.referralRepository = referralRepository;
+        this.messageRepository = messageRepository;
     }
 
     @GetMapping
@@ -184,4 +184,9 @@ interface VisitRepository extends JpaRepository<Visit, Long> {
 @Component
 interface ReferralRepository extends JpaRepository<Referral, Long> {
     //TODO: Add ID field for referrals, and search by ID
+}
+
+@Component
+interface MessageRepository extends JpaRepository<AdminMessage, Long> {
+
 }
