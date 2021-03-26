@@ -68,7 +68,7 @@ public class Controller {
     @PostMapping("/clients")
     List<Client> multipleSyncClients(@RequestBody List<Client> clients) {
         for (Client client : clients) {
-            clientRepository.save(new Client(client.getID(), client.getConsent(), client.getDate(), client.getFirstName(),
+            clientRepository.save(new Client(client.getId(), client.getConsent(), client.getDate(), client.getFirstName(),
                     client.getLastName(), client.getAge(), client.getGender(), client.getLocation(), client.getVillageNumber(),
                     client.getContact(), client.getCaregiverPresence(), client.getCaregiverNumber(), client.getPhoto(), client.getDisability(),
                     client.getHealthRate(), client.getHealthReq(), client.getHealthGoal(), client.getEducationRate(), client.getEducationReq(),
