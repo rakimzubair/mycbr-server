@@ -68,12 +68,12 @@ public class Controller {
     @PostMapping("/clients")
     List<Client> multipleSyncClients(@RequestBody List<Client> clients) {
         for (Client client : clients) {
-            clientRepository.save(new Client(client.getID(), client.getCONSENT(), client.getDATE(), client.getFIRST_NAME(),
-                    client.getLAST_NAME(), client.getAGE(), client.getGENDER(), client.getLOCATION(), client.getVILLAGE_NUMBER(),
-                    client.getCONTACT(), client.getCAREGIVER_PRESENCE(), client.getCAREGIVER_NUMBER(), client.getPhoto(), client.getDISABILITY(),
-                    client.getHEALTH_RATE(), client.getHEALTH_REQUIREMENT(), client.getHEALTH_GOAL(), client.getEDUCATION_RATE(), client.getEDUCATION_REQUIRE(),
-                    client.getEDUCATION_GOAL(), client.getSOCIAL_RATE(), client.getSOCIAL_REQUIREMENT(), client.getSOCIAL_GOAL(), client.getLATITUDE(), client.getLONGITUDE(),
-                    client.getWORKER_ID(), "1"));
+            clientRepository.save(new Client(client.getID(), client.getConsent(), client.getDate(), client.getFirstName(),
+                    client.getLastName(), client.getAge(), client.getGender(), client.getLocation(), client.getVillageNumber(),
+                    client.getContact(), client.getCaregiverPresence(), client.getCaregiverNumber(), client.getPhoto(), client.getDisability(),
+                    client.getHealthRate(), client.getHealthReq(), client.getHealthGoal(), client.getEducationRate(), client.getEducationReq(),
+                    client.getEducationGoal(), client.getSocialRate(), client.getSocialReq(), client.getSocialGoal(), client.getLatitude(), client.getLongitude(),
+                    client.getWorkerID(), "1"));
         }
 
         return clientRepository.findAll();
