@@ -10,7 +10,7 @@ public class Client {
     @Id
     @Column
     @JsonProperty("ID")
-    private String ID;
+    private String id;
 
     @Column(length = 1)
     @JsonProperty("CONSENT")
@@ -119,8 +119,8 @@ public class Client {
 
     public Client() {}
 
-    public Client(String ID, String consent, String date, String firstName, String lastName, String age, String gender, String location, String villageNumber, String contact, String caregiverPresence, String caregiverNumber, String photo, String disability, String healthRate, String healthReq, String healthGoal, String educationRate, String educationReq, String educationGoal, String socialRate, String socialReq, String socialGoal, String latitude, String longitude, String workerID, String isSynced) {
-        this.ID = ID;
+    public Client(String id, String consent, String date, String firstName, String lastName, String age, String gender, String location, String villageNumber, String contact, String caregiverPresence, String caregiverNumber, String photo, String disability, String healthRate, String healthReq, String healthGoal, String educationRate, String educationReq, String educationGoal, String socialRate, String socialReq, String socialGoal, String latitude, String longitude, String workerID, String isSynced) {
+        this.id = id;
         this.consent = consent;
         this.date = date;
         this.firstName = firstName;
@@ -149,12 +149,12 @@ public class Client {
         this.isSynced = isSynced;
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getConsent() {
