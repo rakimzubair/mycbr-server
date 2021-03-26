@@ -70,7 +70,7 @@ public class Controller {
         for (Client client : clients) {
             clientRepository.save(new Client(client.getID(), client.getCONSENT(), client.getDATE(), client.getFIRST_NAME(),
                     client.getLAST_NAME(), client.getAGE(), client.getGENDER(), client.getLOCATION(), client.getVILLAGE_NUMBER(),
-                    client.getCONTACT(), client.getCAREGIVER_PRESENCE(), client.getCAREGIVER_NUMBER(), client.getDISABILITY(),
+                    client.getCONTACT(), client.getCAREGIVER_PRESENCE(), client.getCAREGIVER_NUMBER(), client.getPhoto(), client.getDISABILITY(),
                     client.getHEALTH_RATE(), client.getHEALTH_REQUIREMENT(), client.getHEALTH_GOAL(), client.getEDUCATION_RATE(), client.getEDUCATION_REQUIRE(),
                     client.getEDUCATION_GOAL(), client.getSOCIAL_RATE(), client.getSOCIAL_REQUIREMENT(), client.getSOCIAL_GOAL(), client.getLATITUDE(), client.getLONGITUDE(),
                     client.getWORKER_ID(), "1"));

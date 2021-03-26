@@ -57,6 +57,10 @@ public class Client {
     private String CAREGIVER_NUMBER;
 
     @Column
+    @JsonProperty("PHOTO")
+    private String photo;
+
+    @Column
     @JsonProperty("DISABILITY")
     private String DISABILITY;
 
@@ -115,7 +119,7 @@ public class Client {
 
     public Client() {}
 
-    public Client(String ID, String CONSENT, String DATE, String FIRST_NAME, String LAST_NAME, String AGE, String GENDER, String LOCATION, String VILLAGE_NUMBER, String CONTACT, String CAREGIVER_PRESENCE, String CAREGIVER_NUMBER, String DISABILITY, String HEALTH_RATE, String HEALTH_REQUIREMENT, String HEALTH_GOAL, String EDUCATION_RATE, String EDUCATION_REQUIRE, String EDUCATION_GOAL, String SOCIAL_RATE, String SOCIAL_REQUIREMENT, String SOCIAL_GOAL, String LATITUDE, String LONGITUDE, String WORKER_ID, String IS_SYNCED) {
+    public Client(String ID, String CONSENT, String DATE, String FIRST_NAME, String LAST_NAME, String AGE, String GENDER, String LOCATION, String VILLAGE_NUMBER, String CONTACT, String CAREGIVER_PRESENCE, String CAREGIVER_NUMBER, String photo, String DISABILITY, String HEALTH_RATE, String HEALTH_REQUIREMENT, String HEALTH_GOAL, String EDUCATION_RATE, String EDUCATION_REQUIRE, String EDUCATION_GOAL, String SOCIAL_RATE, String SOCIAL_REQUIREMENT, String SOCIAL_GOAL, String LATITUDE, String LONGITUDE, String WORKER_ID, String IS_SYNCED) {
         this.ID = ID;
         this.CONSENT = CONSENT;
         this.DATE = DATE;
@@ -128,6 +132,7 @@ public class Client {
         this.CONTACT = CONTACT;
         this.CAREGIVER_PRESENCE = CAREGIVER_PRESENCE;
         this.CAREGIVER_NUMBER = CAREGIVER_NUMBER;
+        this.photo = photo;
         this.DISABILITY = DISABILITY;
         this.HEALTH_RATE = HEALTH_RATE;
         this.HEALTH_REQUIREMENT = HEALTH_REQUIREMENT;
@@ -238,6 +243,14 @@ public class Client {
 
     public void setCAREGIVER_NUMBER(String CAREGIVER_NUMBER) {
         this.CAREGIVER_NUMBER = CAREGIVER_NUMBER;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getDISABILITY() {
