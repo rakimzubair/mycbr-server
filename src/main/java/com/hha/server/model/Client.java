@@ -56,7 +56,7 @@ public class Client {
     @JsonProperty("CAREGIVER_NUMBER")
     private String CAREGIVER_NUMBER;
 
-    @Column
+    @Column(length = 10485760)
     @JsonProperty("PHOTO")
     private String photo;
 
