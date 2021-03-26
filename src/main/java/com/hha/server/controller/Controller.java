@@ -93,17 +93,17 @@ public class Controller {
 
         for (CBRWorker worker : workers) {
             //If worker email already exists in database, return error code 409
-            if(!workerRepository.findByUsername(worker.getUSERNAME()).isEmpty()) {
+            if(!workerRepository.findByUsername(worker.getUsername()).isEmpty()) {
                 throw new IllegalArgumentException();
             }
 
             else {
-                ID = (int) Long.parseLong(worker.getID());
+                ID = (int) Long.parseLong(worker.getId());
                 while (!workerRepository.findByID(String.valueOf(ID)).isEmpty()) {
                     ID += 1;
                 }
 
-                workerRepository.save(new CBRWorker(String.valueOf(ID), worker.getFIRST_NAME(), worker.getLAST_NAME(), worker.getUSERNAME(), worker.getPASSWORD()));
+                workerRepository.save(new CBRWorker(String.valueOf(ID), worker.getFirstName(), worker.getLastName(), worker.getUsername(), worker.getPassword()));
             }
         }
 
