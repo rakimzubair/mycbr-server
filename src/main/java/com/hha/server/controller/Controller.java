@@ -103,7 +103,7 @@ public class Controller {
                     ID += 1;
                 }
 
-                workerRepository.save(new CBRWorker(String.valueOf(ID), worker.getFirstName(), worker.getLastName(), worker.getUsername(), worker.getPassword()));
+                workerRepository.save(new CBRWorker(worker.getFirstName(), worker.getLastName(), worker.getUsername(), worker.getPassword(), String.valueOf(ID)));
             }
         }
 
