@@ -27,15 +27,20 @@ public class CBRWorker {
     @JsonProperty("ID")
     private String id;
 
+    @Column
+    @JsonProperty("IS_ADMIN")
+    private String isAdmin;
+
     public CBRWorker() {
     }
 
-    public CBRWorker(String firstName, String lastName, String username, String password, String id) {
+    public CBRWorker(String firstName, String lastName, String username, String password, String id, String isAdmin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.id = id;
+        this.isAdmin = isAdmin;
     }
 
     public String getFirstName() {
@@ -76,5 +81,13 @@ public class CBRWorker {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(String isAdmin) {
+        this.isAdmin = isAdmin;
     }
 }
