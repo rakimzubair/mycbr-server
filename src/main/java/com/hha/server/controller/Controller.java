@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityExistsException;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -178,6 +179,7 @@ interface ClientRepository extends JpaRepository<Client, Long> {
     @Query(value = "SELECT * FROM CLIENT_DATA WHERE ID = ?1", nativeQuery = true)
     List<Client> findByID(String ID);
 
+    @Transactional
     @Modifying
     @Query(value = "DELETE FROM CLIENT_DATA WHERE ID = ?1", nativeQuery = true)
     Integer deleteByID(String ID);
