@@ -185,7 +185,7 @@ interface ClientRepository extends JpaRepository<Client, Long> {
     List<Client> findByID(String ID);
 
     @Query(value = "DELETE FROM CLIENT_DATA WHERE ID = ?1", nativeQuery = true)
-    Long deleteByID(String ID);
+    void deleteByID(String ID);
 }
 
 @Component
