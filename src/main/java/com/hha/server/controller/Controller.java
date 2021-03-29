@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityExistsException;
 import java.util.List;
 
 @RestController
@@ -94,7 +95,7 @@ public class Controller {
         for (CBRWorker worker : workers) {
             //If worker email already exists in database, return error code 409
             if(!workerRepository.findByUsername(worker.getUsername()).isEmpty()) {
-                throw new IllegalArgumentException();
+                throw new EntityExistsException();
             }
 
             else {
@@ -153,15 +154,28 @@ public class Controller {
 
     //---DELETE ENDPOINTS--
     @GetMapping("/delete-client/{id}")
-    public void deleteClientByID(@PathVariable("id") String clientID) {
-        clientRepository.deleteByID(clientID);
+    public List<Client> deleteClientByID(@PathVariable("id") String clientID) {
+        if (clientRepository.deleteByID(clientID) == 1) {
+            return clientRepository.findAll();
+        }
+
+        throw new IllegalArgumentException();
     }
 
     //Exception Handlers
+    //1. Already exists
     @ResponseStatus(value = HttpStatus.CONFLICT,
             reason = "Email is already in use.")
-    @ExceptionHandler(IllegalArgumentException.class)
+    @ExceptionHandler(EntityExistsException.class)
     public void alreadyExistsExceptionHandler() {
+
+    }
+
+    //2. Bad request
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST,
+            reason = "Request ID not found.")
+    @ExceptionHandler(IllegalArgumentException.class)
+    public void badIdExceptionHandler() {
 
     }
 }
@@ -172,7 +186,7 @@ interface ClientRepository extends JpaRepository<Client, Long> {
     List<Client> findByID(String ID);
 
     @Query(value = "DELETE FROM CLIENT_DATA WHERE ID = ?1", nativeQuery = true)
-    void deleteByID(String ID);
+    Long deleteByID(String ID);
 }
 
 @Component
