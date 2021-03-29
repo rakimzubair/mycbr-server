@@ -153,7 +153,7 @@ public class Controller {
     }
 
     //---DELETE ENDPOINTS--
-    @DeleteMapping("/delete-client/{id}")
+    @GetMapping("/delete-client/{id}")
     public String deleteClientByID(@PathVariable("id") String clientID) {
         clientRepository.deleteByID(clientID);
         return "Client with id " + clientID + " deleted!";
