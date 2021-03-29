@@ -180,7 +180,7 @@ interface ClientRepository extends JpaRepository<Client, Long> {
 
     @Modifying
     @Query(value = "DELETE FROM CLIENT_DATA WHERE ID = ?1", nativeQuery = true)
-    Long deleteByID(String ID);
+    Integer deleteByID(String ID);
 }
 
 @Component
