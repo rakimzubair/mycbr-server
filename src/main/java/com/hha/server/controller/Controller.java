@@ -151,6 +151,12 @@ public class Controller {
         return referralRepository.findAll();
     }
 
+    //---DELETE ENDPOINTS--
+    @GetMapping("/delete-client/{id}")
+    public void deleteClientByID(@PathVariable("id") String clientID) {
+        clientRepository.deleteByID(clientID);
+    }
+
     //Exception Handlers
     @ResponseStatus(value = HttpStatus.CONFLICT,
             reason = "Email is already in use.")
@@ -164,6 +170,9 @@ public class Controller {
 interface ClientRepository extends JpaRepository<Client, Long> {
     @Query(value = "SELECT * FROM CLIENT_DATA WHERE ID = ?1", nativeQuery = true)
     List<Client> findByID(String ID);
+
+    @Query(value = "DELETE FROM CLIENT_DATA WHERE ID = ?1", nativeQuery = true)
+    void deleteByID(String ID);
 }
 
 @Component
