@@ -153,10 +153,10 @@ public class Controller {
     }
 
     //---DELETE ENDPOINTS--
-    @GetMapping("/delete-client/{id}")
-    public List<Client> deleteClientByID(@PathVariable("id") String clientID) {
+    @DeleteMapping("/delete-client/{id}")
+    public String deleteClientByID(@PathVariable("id") String clientID) {
         clientRepository.deleteByID(clientID);
-        return clientRepository.findAll();
+        return "Client with id " + clientID + " deleted!";
 
         //throw new IllegalArgumentException();
     }
