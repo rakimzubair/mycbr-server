@@ -4,6 +4,7 @@ import com.hha.server.model.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -155,10 +156,11 @@ public class Controller {
     //---DELETE ENDPOINTS--
     @GetMapping("/delete-client/{id}")
     public String deleteClientByID(@PathVariable("id") String clientID) {
-        clientRepository.deleteByID(clientID);
-        return "Client with id " + clientID + " deleted!";
+        if (clientRepository.deleteByID(clientID) > 0) {
+            return "Client with id " + clientID + " deleted!";
+        }
 
-        //throw new IllegalArgumentException();
+        return "Client with id " + clientID + " doesn't exist.";
     }
 
     //Exception Handlers
@@ -169,14 +171,6 @@ public class Controller {
     public void alreadyExistsExceptionHandler() {
 
     }
-
-    //2. Bad request
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST,
-            reason = "Request ID not found.")
-    @ExceptionHandler(IllegalArgumentException.class)
-    public void badIdExceptionHandler() {
-
-    }
 }
 
 @Component
@@ -184,8 +178,9 @@ interface ClientRepository extends JpaRepository<Client, Long> {
     @Query(value = "SELECT * FROM CLIENT_DATA WHERE ID = ?1", nativeQuery = true)
     List<Client> findByID(String ID);
 
+    @Modifying
     @Query(value = "DELETE FROM CLIENT_DATA WHERE ID = ?1", nativeQuery = true)
-    void deleteByID(String ID);
+    Long deleteByID(String ID);
 }
 
 @Component
