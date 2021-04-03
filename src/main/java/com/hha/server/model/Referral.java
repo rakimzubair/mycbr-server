@@ -33,7 +33,7 @@ public class Referral {
     private String hasWheelChair;
 
     @Column
-    @JsonProperty("WHEELCHAIR_REPARABLE")
+    @JsonProperty("WHEELCHAIR_REPAIRABLE")
     private String wheelchairRepairable;
 
     @Column
