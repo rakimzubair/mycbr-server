@@ -13,7 +13,7 @@ public class Referral {
     private String id;
 
     @Column
-    @JsonProperty("SERVICE_REQ")
+    @JsonProperty("SERVICE_REQUIRED")
     private String serviceReq;
 
     @Column
@@ -21,7 +21,7 @@ public class Referral {
     private String referralPhoto;
 
     @Column
-    @JsonProperty("BASIC_OR_INTER")
+    @JsonProperty("BASIC_OR_INTERMEDIATE")
     private String basicOrInter;
 
     @Column
@@ -53,11 +53,11 @@ public class Referral {
     private String injuryLocationElbow;
 
     @Column
-    @JsonProperty("STATUS")
+    @JsonProperty("REFERRAL_STATUS")
     private String status;
 
     @Column
-    @JsonProperty("OUTCOME")
+    @JsonProperty("REFERRAL_OUTCOME")
     private String outcome;
 
     @Column
