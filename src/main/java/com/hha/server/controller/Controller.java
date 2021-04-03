@@ -145,10 +145,10 @@ public class Controller {
     List<Referral> multipleSyncReferrals(@RequestBody List<Referral> referrals) {
         for (Referral referral : referrals) {
 
-            referralRepository.save(new Referral(referral.getSERVICE_REQ(),referral.getREFERRAL_PHOTO(), referral.getBASIC_OR_INTER(),
-                    referral.getHIP_WIDTH(), referral.getHAS_WHEEL_CHAIR(), referral.getWHEEL_CHAIR_REPARABLE(), referral.getBRING_TO_CENTRE(),
-                    referral.getCONDITIONS(), referral.getINJURY_LOCATION_KNEE(), referral.getINJURY_LOCATION_ELBOW(), referral.getSTATUS(),
-                    referral.getOUTCOME(), referral.getCLIENT_ID(), "1"));
+            referralRepository.save(new Referral(referral.getId(), referral.getServiceReq(),referral.getReferralPhoto(), referral.getBasicOrInter(),
+                    referral.getHipWidth(), referral.getHasWheelChair(), referral.getWheelchairRepairable(), referral.getBringToCentre(),
+                    referral.getConditions(), referral.getInjuryLocationKnee(), referral.getInjuryLocationElbow(), referral.getStatus(),
+                    referral.getOutcome(), referral.getClientID(), "1"));
         }
 
         return referralRepository.findAll();
