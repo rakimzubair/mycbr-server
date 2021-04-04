@@ -19,6 +19,14 @@ public class CBRWorker {
     private String username;
 
     @Column
+    @JsonProperty("ZONE")
+    private String zone;
+
+    @Column(length = 10485760)
+    @JsonProperty("PHOTO")
+    private String photo;
+
+    @Column
     @JsonProperty("PASSWORD")
     private String password;
 
@@ -34,10 +42,12 @@ public class CBRWorker {
     public CBRWorker() {
     }
 
-    public CBRWorker(String firstName, String lastName, String username, String password, String id, String isAdmin) {
+    public CBRWorker(String firstName, String lastName, String username, String zone, String photo, String password, String id, String isAdmin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
+        this.zone = zone;
+        this.photo = photo;
         this.password = password;
         this.id = id;
         this.isAdmin = isAdmin;
@@ -65,6 +75,22 @@ public class CBRWorker {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getZone() {
+        return zone;
+    }
+
+    public void setZone(String zone) {
+        this.zone = zone;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getPassword() {

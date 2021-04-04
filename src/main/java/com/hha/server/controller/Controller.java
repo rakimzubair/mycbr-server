@@ -106,7 +106,8 @@ public class Controller {
                     ID += 1;
                 }
 
-                workerRepository.save(new CBRWorker(worker.getFirstName(), worker.getLastName(), worker.getUsername(), worker.getPassword(), String.valueOf(ID), worker.getIsAdmin()));
+                workerRepository.save(new CBRWorker(worker.getFirstName(), worker.getLastName(), worker.getUsername(), worker.getZone(),
+                                      worker.getPhoto(), worker.getPassword(), String.valueOf(ID), worker.getIsAdmin()));
             }
         }
 
