@@ -16,7 +16,7 @@ public class Referral {
     @JsonProperty("SERVICE_REQUIRED")
     private String serviceReq;
 
-    @Column
+    @Column(length = 10485760)
     @JsonProperty("REFERRAL_PHOTO")
     private String referralPhoto;
 
