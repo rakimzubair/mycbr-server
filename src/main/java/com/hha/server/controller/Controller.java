@@ -173,7 +173,7 @@ public class Controller {
     //SYNC ENDPOINTS - ADMINMESSAGES
     //1. App has no data
     @GetMapping("/get-admin-messages")
-    List<Referral> emptySyncMessages() {
+    List<AdminMessage> emptySyncMessages() {
         return messageRepository.findAll();
     }
 
