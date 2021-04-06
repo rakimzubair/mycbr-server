@@ -181,8 +181,8 @@ public class Controller {
     @PostMapping("/admin-messages")
     List<AdminMessage> multipleSyncMessages(@RequestBody List<AdminMessage> messages) {
         for (AdminMessage message : messages) {
-            messageRepository.save(new AdminMessage(message.getAdminID(), message.getTitle(), message.getDate(), message.getLocation(),
-                    message.getMessage(), message.getIsSynced(), message.getViewedStatus()));
+            messageRepository.save(new AdminMessage(message.getMessageID(), message.getAdminID(), message.getTitle(), message.getDate(), message.getLocation(),
+                    message.getMessage(), "1", message.getViewedStatus()));
         }
 
         return messageRepository.findAll();
