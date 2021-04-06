@@ -12,8 +12,16 @@ public class AdminMessage {
     private String adminID;
 
     @Column
+    @JsonProperty("TITLE")
+    private String title;
+
+    @Column
     @JsonProperty("DATE")
     private String date;
+
+    @Column
+    @JsonProperty("LOCATION")
+    private String location;
 
     @Column
     @JsonProperty("MESSAGE")
@@ -30,9 +38,11 @@ public class AdminMessage {
     public AdminMessage() {
     }
 
-    public AdminMessage(String adminID, String date, String message, String isSynced, String viewedStatus) {
+    public AdminMessage(String adminID, String title, String date, String location, String message, String isSynced, String viewedStatus) {
         this.adminID = adminID;
+        this.title = title;
         this.date = date;
+        this.location = location;
         this.message = message;
         this.isSynced = isSynced;
         this.viewedStatus = viewedStatus;
@@ -46,12 +56,28 @@ public class AdminMessage {
         this.adminID = adminID;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getMessage() {

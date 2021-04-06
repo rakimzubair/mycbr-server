@@ -170,6 +170,24 @@ public class Controller {
         return referralRepository.findAll();
     }
 
+    //SYNC ENDPOINTS - ADMINMESSAGES
+    //1. App has no data
+    @GetMapping("/get-admin-messages")
+    List<Referral> emptySyncMessages() {
+        return messageRepository.findAll();
+    }
+
+    //2. App has entries
+    @PostMapping("/admin-messages")
+    List<Referral> multipleSyncMessages(@RequestBody List<AdminMessage> messages) {
+        for (AdminMessage message : messages) {
+            messageRepository.save(new AdminMessage(message.getAdminID(), message.getTitle(), message.getDate(), message.getLocation(),
+                    message.getMessage(), message.getIsSynced(), message.getViewedStatus()));
+        }
+
+        return messageRepository.findAll();
+    }
+
     //---DELETE ENDPOINTS--
     @GetMapping("/delete-client/{id}")
     public String deleteClientByID(@PathVariable("id") String clientID) {
