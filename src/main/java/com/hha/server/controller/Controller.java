@@ -117,6 +117,10 @@ public class Controller {
     @PostMapping ("workers/{id}")
     CBRWorker editCBRWorker (@PathVariable("id") String workerID,
                              @RequestBody CBRWorker newWorker) {
+        if (!workerRepository.findByUsername(newWorker.getUsername()).isEmpty()) {
+            throw new EntityExistsException();
+        }
+
         if (workerRepository.findByID(workerID).size() > 0 )  {
             workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), workerID);
             return newWorker;
@@ -179,7 +183,7 @@ public class Controller {
     //Exception Handlers
     //1. Already exists
     @ResponseStatus(value = HttpStatus.CONFLICT,
-            reason = "Email is already in use.")
+            reason = "Username is already in use.")
     @ExceptionHandler(EntityExistsException.class)
     public void alreadyExistsExceptionHandler() {
 
