@@ -118,6 +118,7 @@ public class Controller {
     CBRWorker editCBRWorker (@PathVariable("id") String workerID,
                              @RequestBody CBRWorker newWorker) {
         if (workerRepository.findByID(workerID).size() > 0 )  {
+            workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), workerID);
             return newWorker;
         }
 
@@ -205,8 +206,8 @@ interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
     List<CBRWorker> findByUsername(String username);
 
     @Modifying
-    @Query(value = "update CBRWorker w set w.firstname = ?1, w.lastname = ?2, w.username = ?3 where u.id = ?4", nativeQuery = true)
-    void updateWorkerById(String firstname, String lastname, String username, Integer workerID);
+    @Query(value = "update CBRWorker w set w.firstName = ?1, w.lastName = ?2, w.username = ?3 where w.id = ?4", nativeQuery = true)
+    void updateWorkerById(String firstname, String lastname, String username, String workerID);
 }
 
 @Component
