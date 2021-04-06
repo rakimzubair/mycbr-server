@@ -179,7 +179,7 @@ public class Controller {
 
     //2. App has entries
     @PostMapping("/admin-messages")
-    List<Referral> multipleSyncMessages(@RequestBody List<AdminMessage> messages) {
+    List<AdminMessage> multipleSyncMessages(@RequestBody List<AdminMessage> messages) {
         for (AdminMessage message : messages) {
             messageRepository.save(new AdminMessage(message.getAdminID(), message.getTitle(), message.getDate(), message.getLocation(),
                     message.getMessage(), message.getIsSynced(), message.getViewedStatus()));
