@@ -114,7 +114,7 @@ public class Controller {
         return workerRepository.findAll();
     }
 
-    /*@PostMapping ("workers/{id}")
+    @PostMapping ("workers/{id}")
     CBRWorker editCBRWorker (@PathVariable("id") String workerID,
                              @RequestBody CBRWorker newWorker) {
         if (workerRepository.findByID(workerID).size() > 0 )  {
@@ -122,7 +122,7 @@ public class Controller {
         }
 
         throw new IllegalArgumentException();
-    }*/
+    }
 
     ///SYNC ENDPOINTS - VISITS
     //1. App has no data
@@ -203,9 +203,6 @@ interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
 
     @Query(value = "SELECT * FROM WORKER_DATA WHERE USERNAME = ?1", nativeQuery = true)
     List<CBRWorker> findByUsername(String username);
-
-    @Modifying
-    @Query()
 }
 
 @Component
