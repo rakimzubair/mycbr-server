@@ -8,6 +8,10 @@ import javax.persistence.*;
 @Table(name = "ADMIN_MESSAGES")
 public class AdminMessage {
     @Id
+    @JsonProperty("ID")
+    private String messageID;
+
+    @Column
     @JsonProperty("ADMIN_ID")
     private String adminID;
 
@@ -38,7 +42,8 @@ public class AdminMessage {
     public AdminMessage() {
     }
 
-    public AdminMessage(String adminID, String title, String date, String location, String message, String isSynced, String viewedStatus) {
+    public AdminMessage(String messageID, String adminID, String title, String date, String location, String message, String isSynced, String viewedStatus) {
+        this.messageID = messageID;
         this.adminID = adminID;
         this.title = title;
         this.date = date;
@@ -46,6 +51,14 @@ public class AdminMessage {
         this.message = message;
         this.isSynced = isSynced;
         this.viewedStatus = viewedStatus;
+    }
+
+    public String getMessageID() {
+        return messageID;
+    }
+
+    public void setMessageID(String messageID) {
+        this.messageID = messageID;
     }
 
     public String getAdminID() {
