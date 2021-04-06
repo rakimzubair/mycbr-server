@@ -207,8 +207,8 @@ interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE WORKER_DATA SET FIRST_NAME = ?1, LAST_NAME = ?2, USERNAME = ?3 where ID = ?4", nativeQuery = true)
-    void updateWorkerById(String firstname, String lastname, String username, String workerID);
+    @Query(value = "UPDATE WORKER_DATA SET FIRST_NAME = ?1, LAST_NAME = ?2, USERNAME = ?3, ZONE = ?4 WHERE ID = ?5", nativeQuery = true)
+    void updateWorkerById(String firstname, String lastname, String username, String zone, String workerID);
 }
 
 @Component
