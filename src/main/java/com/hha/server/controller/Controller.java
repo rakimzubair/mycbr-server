@@ -205,7 +205,7 @@ interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
     List<CBRWorker> findByUsername(String username);
 
     @Modifying
-    @Query("update CBRWorker w set w.firstname = ?1, w.lastname = ?2, w.username = ?3 where u.id = ?4")
+    @Query(value = "update CBRWorker w set w.firstname = ?1, w.lastname = ?2, w.username = ?3 where u.id = ?4", nativeQuery = true)
     void updateWorkerById(String firstname, String lastname, String username, Integer workerID);
 }
 
