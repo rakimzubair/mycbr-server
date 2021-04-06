@@ -114,7 +114,7 @@ public class Controller {
         return workerRepository.findAll();
     }
 
-    @PostMapping ("workers/{id}")
+    /*@PostMapping ("workers/{id}")
     CBRWorker editCBRWorker (@PathVariable("id") String workerID,
                              @RequestBody CBRWorker newWorker) {
         if (workerRepository.findByID(workerID).size() > 0 )  {
@@ -122,7 +122,7 @@ public class Controller {
         }
 
         throw new IllegalArgumentException();
-    }
+    }*/
 
     ///SYNC ENDPOINTS - VISITS
     //1. App has no data
