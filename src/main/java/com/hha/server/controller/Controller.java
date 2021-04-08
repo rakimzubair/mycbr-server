@@ -214,7 +214,7 @@ public class Controller {
                     survey.getItems_access(), survey.getClient_id(), survey.getIs_synced()));
         }
 
-        return messageRepository.findAll();
+        return surveyRepository.findAll();
     }
 
     //---DELETE ENDPOINTS--
