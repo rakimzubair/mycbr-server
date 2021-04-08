@@ -199,6 +199,24 @@ public class Controller {
         return surveyRepository.findAll();
     }
 
+    //2. App has entries
+    @PostMapping("/surveys")
+    List<Survey> multipleSyncSurveys(@RequestBody List<Survey> surveys) {
+        for (Survey survey : surveys) {
+            surveyRepository.save(new Survey(survey.getSurveyId(), survey.getHealth_condition(), survey.getHave_rehab_access(),
+                    survey.getNeed_rehab_access(), survey.getHave_device(), survey.getDevice_condition(), survey.getNeed_device(),
+                    survey.getDevice_type(), survey.getIs_satisfied(), survey.getIs_student(), survey.getGrade_no(), survey.getReason_no_school(),
+                    survey.getWas_student(), survey.getWant_school(), survey.getIs_valued(), survey.getIs_independent(), survey.getIs_social(),
+                    survey.getIs_socially_affected(), survey.getWas_discriminated(), survey.getIs_working(), survey.getWork_type(),
+                    survey.getIs_self_employed(), survey.getNeeds_met(), survey.getIs_work_affected(), survey.getWant_work(),
+                    survey.getFood_security(), survey.getFood_security(), survey.getChild_condition(), survey.getReferral_required(),
+                    survey.getIs_member(), survey.getOrganisation(), survey.getIs_aware(), survey.getIs_influence(), survey.getIs_shelter_adequate(),
+                    survey.getItems_access(), survey.getClient_id(), survey.getIs_synced()));
+        }
+
+        return messageRepository.findAll();
+    }
+
     //---DELETE ENDPOINTS--
     @GetMapping("/delete-client/{id}")
     public String deleteClientByID(@PathVariable("id") String clientID) {
