@@ -199,17 +199,6 @@ public class Controller {
         return surveyRepository.findAll();
     }
 
-    //2. App has entries
-    @PostMapping("/admin-messages")
-    List<AdminMessage> multipleSyncMessages(@RequestBody List<AdminMessage> messages) {
-        for (AdminMessage message : messages) {
-            messageRepository.save(new AdminMessage(message.getMessageID(), message.getAdminID(), message.getTitle(), message.getDate(), message.getLocation(),
-                    message.getMessage(), "1", message.getViewedStatus()));
-        }
-
-        return messageRepository.findAll();
-    }
-
     //---DELETE ENDPOINTS--
     @GetMapping("/delete-client/{id}")
     public String deleteClientByID(@PathVariable("id") String clientID) {
