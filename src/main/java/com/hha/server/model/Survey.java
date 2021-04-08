@@ -2,6 +2,10 @@ package com.hha.server.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+
 @Entity
 @Table(name = "CLIENT_SURVEYS")
 public class Survey implements Serializable {
