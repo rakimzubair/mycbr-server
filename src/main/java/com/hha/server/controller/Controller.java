@@ -31,12 +31,16 @@ public class Controller {
     @Autowired
     private final MessageRepository messageRepository;
 
-    public Controller(ClientRepository clientRepository, WorkerRepository workerRepository, VisitRepository visitRepository, ReferralRepository referralRepository, MessageRepository messageRepository) {
+    @Autowired
+    private final SurveyRepository surveyRepository;
+
+    public Controller(ClientRepository clientRepository, WorkerRepository workerRepository, VisitRepository visitRepository, ReferralRepository referralRepository, MessageRepository messageRepository, SurveyRepository surveyRepository) {
         this.clientRepository = clientRepository;
         this.workerRepository = workerRepository;
         this.visitRepository = visitRepository;
         this.referralRepository = referralRepository;
         this.messageRepository = messageRepository;
+        this.surveyRepository = surveyRepository;
     }
 
     @GetMapping
@@ -188,6 +192,24 @@ public class Controller {
         return messageRepository.findAll();
     }
 
+    //SYNC ENDPOINTS - Survey
+    //1. App has no data
+    @GetMapping("/get-surveys")
+    List<Survey> emptySyncSurveys() {
+        return surveyRepository.findAll();
+    }
+
+    //2. App has entries
+    @PostMapping("/admin-messages")
+    List<AdminMessage> multipleSyncMessages(@RequestBody List<AdminMessage> messages) {
+        for (AdminMessage message : messages) {
+            messageRepository.save(new AdminMessage(message.getMessageID(), message.getAdminID(), message.getTitle(), message.getDate(), message.getLocation(),
+                    message.getMessage(), "1", message.getViewedStatus()));
+        }
+
+        return messageRepository.findAll();
+    }
+
     //---DELETE ENDPOINTS--
     @GetMapping("/delete-client/{id}")
     public String deleteClientByID(@PathVariable("id") String clientID) {
@@ -246,5 +268,10 @@ interface ReferralRepository extends JpaRepository<Referral, Long> {
 
 @Component
 interface MessageRepository extends JpaRepository<AdminMessage, Long> {
+
+}
+
+@Component
+interface SurveyRepository extends JpaRepository<Survey, Long> {
 
 }
