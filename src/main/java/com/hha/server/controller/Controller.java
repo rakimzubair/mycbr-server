@@ -209,7 +209,7 @@ public class Controller {
                     survey.getWas_student(), survey.getWant_school(), survey.getIs_valued(), survey.getIs_independent(), survey.getIs_social(),
                     survey.getIs_socially_affected(), survey.getWas_discriminated(), survey.getIs_working(), survey.getWork_type(),
                     survey.getIs_self_employed(), survey.getNeeds_met(), survey.getIs_work_affected(), survey.getWant_work(),
-                    survey.getFood_security(), survey.getFood_security(), survey.getChild_condition(), survey.getReferral_required(),
+                    survey.getFood_security(), survey.getIs_diet_enough(), survey.getChild_condition(), survey.getReferral_required(),
                     survey.getIs_member(), survey.getOrganisation(), survey.getIs_aware(), survey.getIs_influence(), survey.getIs_shelter_adequate(),
                     survey.getItems_access(), survey.getClient_id(), survey.getIs_synced()));
         }
