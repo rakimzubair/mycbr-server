@@ -121,7 +121,8 @@ public class Controller {
     @PostMapping ("/update-worker/{id}")
     CBRWorker editCBRWorker (@PathVariable("id") String workerID,
                              @RequestBody CBRWorker newWorker) {
-        if (!workerRepository.findByUsername(newWorker.getUsername()).isEmpty()) {
+        if ((!workerRepository.findByUsername(newWorker.getUsername()).isEmpty())
+        && (workerRepository.findByUsername(newWorker.getUsername()).get(0).getId() != workerID)){
             throw new EntityExistsException();
         }
 
