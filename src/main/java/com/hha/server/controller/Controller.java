@@ -121,12 +121,8 @@ public class Controller {
     @PostMapping ("/update-worker/{id}")
     CBRWorker editCBRWorker (@PathVariable("id") String workerID,
                              @RequestBody CBRWorker newWorker) {
-        if ((!workerRepository.findByUsername(newWorker.getUsername()).isEmpty())
-        && (workerRepository.findByUsername(newWorker.getUsername()).get(0).getId() == newWorker.getId())){
-            throw new EntityExistsException();
-        }
-
-        if (workerRepository.findByID(newWorker.getId()).size() > 0 )  {
+        if ((workerRepository.findByID(newWorker.getId()).size() > 0 )
+            && (workerRepository.findByUsername(newWorker.getUsername()).size() >= 1)) {
             workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), newWorker.getPhoto(), newWorker.getId());
             return newWorker;
         }
