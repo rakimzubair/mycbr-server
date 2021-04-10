@@ -122,7 +122,7 @@ public class Controller {
     CBRWorker editCBRWorker (@PathVariable("id") String workerID,
                              @RequestBody CBRWorker newWorker) {
         if ((workerRepository.findByID(newWorker.getId()).size() > 0 )
-            && (workerRepository.findByUsername(newWorker.getUsername()).size() >= 1)) {
+            && (workerRepository.findByUsername(newWorker.getUsername()).size() <= 1)) {
             workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), newWorker.getPhoto(), newWorker.getId());
             return newWorker;
         }
