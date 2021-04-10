@@ -135,12 +135,12 @@ public class Controller {
     }
 
     @GetMapping ("/num-workers/{id}")
-    List<CBRWorker> editCBRWorker (@PathVariable("id") String workerID) {
+    List<CBRWorker> numCBRbyID (@PathVariable("id") String workerID) {
         return workerRepository.findByID(workerID);
     }
 
     @GetMapping ("/num-workers-un/{username}")
-    List<CBRWorker> editCBRWorker (@PathVariable("username") String username) {
+    List<CBRWorker> numCBRbyUN (@PathVariable("username") String username) {
         return workerRepository.findByUsername(username);
     }
 
