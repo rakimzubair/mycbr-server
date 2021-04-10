@@ -239,7 +239,7 @@ public class Controller {
     }
 
     @GetMapping("/delete-worker/{id}")
-    public String deleteClientByID(@PathVariable("id") String workerID) {
+    public String deleteWorkerByID(@PathVariable("id") String workerID) {
         if (workerRepository.deleteByID(workerID) > 0) {
             return "Client with id " + workerID + " deleted!";
         }
