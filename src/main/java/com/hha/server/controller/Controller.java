@@ -126,12 +126,17 @@ public class Controller {
             throw new EntityExistsException();
         }
 
-        if (workerRepository.findByID(workerID).size() > 0 )  {
+        if (workerRepository.findByID(newWorker.getId()).size() > 0 )  {
             workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), newWorker.getPhoto(), newWorker.getId());
             return newWorker;
         }
 
         throw new IllegalArgumentException();
+    }
+
+    @GetMapping ("/num-workers/{id}")
+    List<CBRWorker> editCBRWorker (@PathVariable("id") String workerID) {
+        return workerRepository.findByID(workerID);
     }
 
     ///SYNC ENDPOINTS - VISITS
