@@ -238,6 +238,15 @@ public class Controller {
         return "Client with id " + clientID + " doesn't exist.";
     }
 
+    @GetMapping("/delete-worker/{id}")
+    public String deleteClientByID(@PathVariable("id") String workerID) {
+        if (workerRepository.deleteByID(workerID) > 0) {
+            return "Client with id " + workerID + " deleted!";
+        }
+
+        return "Client with id " + workerID + " doesn't exist.";
+    }
+
     //Exception Handlers
     //1. Already exists
     @ResponseStatus(value = HttpStatus.CONFLICT,
@@ -271,6 +280,11 @@ interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
     @Modifying
     @Query(value = "UPDATE WORKER_DATA SET FIRST_NAME = ?1, LAST_NAME = ?2, USERNAME = ?3, ZONE = ?4, PHOTO = ?5 WHERE ID = ?6", nativeQuery = true)
     void updateWorkerById(String firstname, String lastname, String username, String zone, String photo, String workerID);
+
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM WORKER_DATA WHERE ID = ?1", nativeQuery = true)
+    Integer deleteByID(String ID);
 }
 
 @Component
