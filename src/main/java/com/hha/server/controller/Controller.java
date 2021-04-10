@@ -127,7 +127,7 @@ public class Controller {
         }
 
         if (workerRepository.findByID(workerID).size() > 0 )  {
-            workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), newWorker.getId());
+            workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), newWorker.getPhoto(), newWorker.getId());
             return newWorker;
         }
 
