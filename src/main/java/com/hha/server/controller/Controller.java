@@ -118,7 +118,7 @@ public class Controller {
         return workerRepository.findAll();
     }
 
-    @PostMapping ("workers/{id}")
+    @PostMapping ("update-worker/{id}")
     CBRWorker editCBRWorker (@PathVariable("id") String workerID,
                              @RequestBody CBRWorker newWorker) {
         if (!workerRepository.findByUsername(newWorker.getUsername()).isEmpty()) {
