@@ -122,7 +122,7 @@ public class Controller {
     CBRWorker editCBRWorker (@PathVariable("id") String workerID,
                              @RequestBody CBRWorker newWorker) {
         if ((!workerRepository.findByUsername(newWorker.getUsername()).isEmpty())
-        && (workerRepository.findByUsername(newWorker.getUsername()).get(0).getId() != newWorker.getId())){
+        && (workerRepository.findByUsername(newWorker.getUsername()).get(0).getId() == newWorker.getId())){
             throw new EntityExistsException();
         }
 
