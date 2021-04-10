@@ -139,6 +139,11 @@ public class Controller {
         return workerRepository.findByID(workerID);
     }
 
+    @GetMapping ("/num-workers-un/{username}")
+    List<CBRWorker> editCBRWorker (@PathVariable("username") String username) {
+        return workerRepository.findByUsername(username);
+    }
+
     ///SYNC ENDPOINTS - VISITS
     //1. App has no data
     @GetMapping("/get-visits")
