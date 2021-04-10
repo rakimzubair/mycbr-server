@@ -127,7 +127,7 @@ public class Controller {
         }
 
         if (workerRepository.findByID(workerID).size() > 0 )  {
-            workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), workerID);
+            workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), newWorker.getId());
             return newWorker;
         }
 
@@ -259,8 +259,8 @@ interface WorkerRepository extends JpaRepository<CBRWorker, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE WORKER_DATA SET FIRST_NAME = ?1, LAST_NAME = ?2, USERNAME = ?3, ZONE = ?4 WHERE ID = ?5", nativeQuery = true)
-    void updateWorkerById(String firstname, String lastname, String username, String zone, String workerID);
+    @Query(value = "UPDATE WORKER_DATA SET FIRST_NAME = ?1, LAST_NAME = ?2, USERNAME = ?3, ZONE = ?4, PHOTO = ?5 WHERE ID = ?6", nativeQuery = true)
+    void updateWorkerById(String firstname, String lastname, String username, String zone, String photo, String workerID);
 }
 
 @Component
