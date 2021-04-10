@@ -144,6 +144,11 @@ public class Controller {
         return workerRepository.findByUsername(username);
     }
 
+    @GetMapping ("/id-by-un/{username}")
+    String getIdByUsername (@PathVariable("username") String username) {
+        return workerRepository.findByUsername(username).get(0).getId();
+    }
+
     ///SYNC ENDPOINTS - VISITS
     //1. App has no data
     @GetMapping("/get-visits")
