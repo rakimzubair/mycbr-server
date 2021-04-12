@@ -121,8 +121,11 @@ public class Controller {
     @PostMapping ("/update-worker/{id}")
     CBRWorker editCBRWorker (@PathVariable("id") String workerID,
                              @RequestBody CBRWorker newWorker) {
+
+        CBRWorker temp = workerRepository.findByUsername(newWorker.getUsername()).get(0);
+
         if ((workerRepository.findByID(newWorker.getId()).size() > 0 )
-            && (workerRepository.findByUsername(newWorker.getUsername()).size() <= 1)) {
+            && (temp.getId() == newWorker.getId())) {
             workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), newWorker.getPhoto(), workerID);
             return newWorker;
         }
