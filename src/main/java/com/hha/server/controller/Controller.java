@@ -122,7 +122,11 @@ public class Controller {
     CBRWorker editCBRWorker (@PathVariable("id") String workerID,
                              @RequestBody CBRWorker newWorker) {
 
-        CBRWorker temp = workerRepository.findByUsername(newWorker.getUsername()).get(0);
+        CBRWorker temp = new CBRWorker();
+
+        if (workerRepository.findByUsername(newWorker.getUsername()).size() > 0) {
+            temp = workerRepository.findByUsername(newWorker.getUsername()).get(0);
+        }
 
         if ((workerRepository.findByID(newWorker.getId()).size() > 0 )
             || (temp.getId() == workerID)) {
