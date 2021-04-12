@@ -123,7 +123,7 @@ public class Controller {
                              @RequestBody CBRWorker newWorker) {
         if ((workerRepository.findByID(newWorker.getId()).size() > 0 )
             && (workerRepository.findByUsername(newWorker.getUsername()).size() <= 1)) {
-            workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), newWorker.getPhoto(), newWorker.getId());
+            workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), newWorker.getPhoto(), workerID);
             return newWorker;
         }
 
