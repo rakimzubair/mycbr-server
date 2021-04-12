@@ -125,7 +125,7 @@ public class Controller {
         CBRWorker temp = workerRepository.findByUsername(newWorker.getUsername()).get(0);
 
         if ((workerRepository.findByID(newWorker.getId()).size() > 0 )
-            && (temp.getId() == newWorker.getId())) {
+            && (temp.getId() == workerID)) {
             workerRepository.updateWorkerById(newWorker.getFirstName(), newWorker.getLastName(), newWorker.getUsername(), newWorker.getZone(), newWorker.getPhoto(), workerID);
             return newWorker;
         }
